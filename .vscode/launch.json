@@ -8,11 +8,13 @@
       "program": "${workspaceFolder}/HumanResourceMachine.exe",
       "args": [],
       "stopAtEntry": false,
-      "cwd": "${fileDirname}",
+      //${workspaceFolder} 工作区
+      //${fileDirname} 当前打开文件目录
+      "cwd": "${workspaceFolder}",
       "environment": [],
       "externalConsole": false,
       "MIMode": "gdb",
-      "preLaunchTask": "build main",
+      //"preLaunchTask": "build2",
       "setupCommands": [
           {
               "description": "为 gdb 启用整齐打印",

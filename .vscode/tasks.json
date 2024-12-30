@@ -9,6 +9,7 @@
                 // "-g",
                 "./src_test/HumanResourceMachine.cpp",
                 "./src_test/Foo.cpp",
+                "./src_test/Foo2.cpp",
                 "-leasyx",
                 "-lgdi32",
                 "-lole32",
@@ -24,7 +25,7 @@
             ],
             "group": {
                 "kind": "build",
-                "isDefault": true
+                "isDefault": false
             },
             "detail": "构建项目"
         }, 
@@ -81,6 +82,47 @@
                 "isDefault": false
             },
             "detail": "构建main项目"
+        }, 
+        {
+            "type": "cppbuild",
+            "label": "build2",
+            "command": "D:\\TDM-GCC-64\\bin\\g++.exe",
+            "args": [
+                // "-fdiagnostics-color=always",
+                // "-g",
+                "./src/main.cpp",
+                "./src/tool.cpp",
+                "./src/game_stage.cpp",
+                "./src/button.cpp",
+                "./src/start_button.cpp",
+                "./src/level_select_button.cpp",
+                "./src/quit_button.cpp",
+                "./src/block.cpp",
+                "./src/slider.cpp",
+                "./src/level.cpp",
+                "./src/scene.cpp",
+                "./src/scene_manager.cpp",
+                "./src/menu_scene.cpp",
+                "./src/level_select_scene.cpp",
+                "./src/game_scene.cpp",
+                "-leasyx",
+                "-lgdi32",
+                "-lole32",
+                "-lmsimg32",
+                "-o",
+                "HumanResourceMachine.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "构建build项目2"
         }, 
     ],
     "version": "2.0.0"
