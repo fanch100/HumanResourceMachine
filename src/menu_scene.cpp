@@ -10,7 +10,8 @@ void MenuScene::Draw()
 {
     // std:: cout << "Menu Scene Draw" << std::endl;
     putimage_alpha(0, 0, &img_menu_background);
-    printf("w=%d h=%d\n",img_menu_background.getwidth(), img_menu_background.getheight());
+    menu_btn_start.Draw(_T("Start"));
+	menu_btn_quit.Draw(_T("Quit"));
     // outtextxy(100, 100, "Menu Scene");
 }
 void MenuScene::Update()
@@ -19,7 +20,9 @@ void MenuScene::Update()
 }
 void MenuScene::ProcessMessage(const ExMessage &msg)
 {
-    // std:: cout << "Menu Scene ProcessMessage" << std::endl;
+    std:: cout << "Menu Scene ProcessMessage" << std::endl;
+    menu_btn_start.ProcessMessage(msg);
+    menu_btn_quit.ProcessMessage(msg);
 }
 void MenuScene::Quit()
 {

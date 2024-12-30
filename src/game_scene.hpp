@@ -5,8 +5,10 @@
 // #include "button.hpp"
 // #include "scene_manager.hpp"
 
-extern IMAGE game_background;
+extern IMAGE img_game_background;
 extern IMAGE block;
+
+extern GameQuitButton game_btn_quit;
 
 class GameScene : public Scene
 {

@@ -9,6 +9,7 @@ extern std::ifstream fin;
 extern std::ofstream fout;
 extern int level_value;
 
+
 class Level
 {
 	public:
@@ -18,6 +19,7 @@ class Level
 		void ProcessMessage(const ExMessage &msg);
 		void InitGame();
 		void QuitGame();
+        
 	// 	int inbox(int cur_step){
 	// 		++nxt_input;
 	// //        printf("nxt_input=%d std.size=%d\n",nxt_input,std_input.size());

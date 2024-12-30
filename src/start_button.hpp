@@ -5,6 +5,7 @@
 // #include "game_stage.hpp"
 
 extern GameStage game_stage;
+extern SceneManager scene_manager;
 
 class StartButton : public Button
 {

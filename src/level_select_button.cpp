@@ -7,6 +7,7 @@ LevelSelectButton::~LevelSelectButton() = default;
 void LevelSelectButton::OnClick()
 {
     game_stage = GameStage::Game;
+    scene_manager.ChangeScene(SceneManager::GameScene::Game);
     cur_level = &level_list[value - 1];
     level_value = this->value;
     cur_level->InitGame();

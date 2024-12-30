@@ -9,6 +9,9 @@
 
 extern IMAGE img_menu_background;
 
+extern StartButton menu_btn_start;
+extern MenuQuitButton menu_btn_quit;
+
 class MenuScene : public Scene
 {
     public:

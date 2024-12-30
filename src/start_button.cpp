@@ -7,4 +7,5 @@ StartButton::~StartButton() = default;
 void StartButton::OnClick()
 {
     game_stage = GameStage::LevelSelect;
+    scene_manager.ChangeScene(SceneManager::GameScene::LevelSelect);
 }

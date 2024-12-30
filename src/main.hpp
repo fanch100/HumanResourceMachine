@@ -9,7 +9,9 @@
 #include "button.hpp"
 #include "start_button.hpp"
 #include "level_select_button.hpp"
-#include "quit_button.hpp"
+#include "menu_quit_button.hpp"
+#include "level_select_quit_button.hpp"
+#include "game_quit_button.hpp"
 
 #include "scene.hpp"
 #include "scene_manager.hpp"

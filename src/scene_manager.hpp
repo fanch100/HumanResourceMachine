@@ -4,9 +4,9 @@
 #include "scene.hpp"
 #include "tool.hpp"
 
-extern Scene menu_scene;
-extern Scene level_select_scene;
-extern Scene game_scene;
+extern MenuScene menu_scene;
+extern LevelSelectScene level_select_scene;
+extern GameScene game_scene;
 
 class SceneManager 
 {

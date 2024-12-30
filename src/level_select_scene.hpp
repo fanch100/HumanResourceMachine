@@ -7,7 +7,10 @@
 // #include "button.hpp"
 // #include "tool.hpp"
 
-extern IMAGE menu_background;
+extern IMAGE img_level_select_background;
+extern int level_number;
+extern std::vector<LevelSelectButton> level_select_btn_list;
+extern LevelSelectQuitButton level_select_btn_quit;
 
 class LevelSelectScene : public Scene
 {

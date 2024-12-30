@@ -44,7 +44,10 @@ void Button::ProcessMessage(const ExMessage &msg)
             break;
         case WM_LBUTTONUP:
             if (stage == Stage::Pushed)
+            {
                 OnClick();
+                stage = Stage::Hovered;
+            }
             break;
         default:
             break;

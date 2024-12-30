@@ -8,11 +8,11 @@
 
 extern bool is_game_quited;
 
-class QuitButton : public Button
+class MenuQuitButton : public Button
 {
 	public:
-		QuitButton(RECT pos, LPCTSTR path_btn_default, LPCTSTR path_btn_hovered, LPCTSTR path_btn_pushed);
-		~QuitButton();
+		MenuQuitButton(RECT pos, LPCTSTR path_btn_default, LPCTSTR path_btn_hovered, LPCTSTR path_btn_pushed);
+		~MenuQuitButton();
 	protected:
 		void OnClick() override;
 };

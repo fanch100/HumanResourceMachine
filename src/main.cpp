@@ -35,7 +35,7 @@ std::ifstream fin;
 std::ofstream fout;
 
 IMAGE img_menu_background;
-IMAGE img_select_level_background;
+IMAGE img_level_select_background;
 IMAGE img_game_background;
 
 IMAGE img_block;
@@ -45,15 +45,16 @@ IMAGE img_btn_default;
 IMAGE img_btn_hovered;
 IMAGE img_btn_pushed;
 
-Scene menu_scene;
-Scene level_select_scene;
-Scene game_scene;
+SceneManager scene_manager;
+MenuScene menu_scene;
+LevelSelectScene level_select_scene;
+GameScene game_scene;
 
 void init_select_level();
 void load_resources()
 {
 	loadimage(&img_menu_background,_T("images/menu_background.png"), 1280, 720, true);
-	loadimage(&img_select_level_background, _T("images/img_select_level_background.jpg"), 1280, 720, true);
+	loadimage(&img_level_select_background, _T("images/img_level_select_background.jpg"), 1280, 720, true);
 	loadimage(&img_game_background, _T("images/game_background.png"), 1280, 720, true);
 	loadimage(&img_block, _T("images/block.png"), block_width, block_height, true);
 	loadimage(&img_player, _T("images/player.png"), player_width, player_height, true);
@@ -112,7 +113,10 @@ void init_select_level()
 		level_select_btn_list.push_back(LevelSelectButton({(window_width-button_width)/2+ i*200 - mid*200, window_height/2+100, (window_width-button_width)/2+ i*200 - mid*200 + button_width, window_height/2+100+button_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"), i));
 	}
 }
-
+StartButton menu_btn_start = StartButton({window_width/2-200, window_height/2+100, window_width/2-200+button_width, window_height/2+100+button_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"));
+MenuQuitButton menu_btn_quit = MenuQuitButton({window_width-button_width, window_height-button_height, window_width, window_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"));
+LevelSelectQuitButton level_select_btn_quit = LevelSelectQuitButton({window_width-button_width, window_height-button_height, window_width, window_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"));
+GameQuitButton game_btn_quit = GameQuitButton({window_width-button_width, window_height-button_height, window_width, window_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"));
 
 int main()
 {
@@ -131,8 +135,6 @@ int main()
 		loadimage(&img, _T(path.c_str()));
 		putimage(0 + i*100,0 + i*100,&img);
 	}
-
-	putimage_alpha(0, 0, &img_menu_background);
 	
 	loadimage(&img,_T("images/btn_default.png"));
 	putimage_alpha(0, 0, &img_btn_default);
@@ -142,53 +144,19 @@ int main()
 	settextcolor(YELLOW);//设置字体颜色为蓝色
 	settextstyle(20, 0, _T("monospace"));//设置字体
 	outtextxy(50, 30, _T("HumanResourceMachine"));//输出文字
+    scene_manager.SetScene(&menu_scene);
 
-
-	StartButton menu_btn_start = StartButton({window_width/2-200, window_height/2+100, window_width/2-200+button_width, window_height/2+100+button_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"));
-	// QuitButton menu_btn_quit = QuitButton({window_width/2+200-button_width, window_height/2+100, window_width/2+200, window_height/2+100+button_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"));
-	QuitButton menu_btn_quit = QuitButton({window_width-button_width, window_height-button_height, window_width, window_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"));
+	
 	while (true)
 	{
 		DWORD start_time = GetTickCount();
 		//信息处理
 		while(peekmessage(&msg))
 		{
-			switch (game_stage)
-			{
-				case GameStage::Menu:
-					menu_btn_start.ProcessMessage(msg);
-					menu_btn_quit.ProcessMessage(msg);
-					break;
-				case GameStage::LevelSelect:
-					for (int i=0; i<level_number; ++i)
-					{
-						level_select_btn_list[i].ProcessMessage(msg);
-					}
-					menu_btn_quit.ProcessMessage(msg);
-					break;
-				case GameStage::Game:
-					switch(msg.message)
-					{
-						int x, y;
-						case WM_LBUTTONDOWN:
-							x = msg.x, y = msg.y;
-							circle(x, y, 100);
-							SetWindowText(hwnd,"Hello World!");
-							
-							break;
-						case WM_LBUTTONUP:
-							x = msg.x, y = msg.y;
-							circle(x+100, y+100, 100);
-							// PostMessage(hwnd, WM_CLOSE, 0, 0);
-							SetWindowText(hwnd,"Hello World!");
-							break;
-					}
-					menu_btn_quit.ProcessMessage(msg);
-					cur_level->ProcessMessage(msg);
-					break;
-			}
+            scene_manager.ProcessMessage(msg);
 		}
 		// 逻辑处理
+        scene_manager.Update();
 		switch (game_stage)
 		{
 			case GameStage::Menu:
@@ -196,34 +164,10 @@ int main()
 			case GameStage::LevelSelect:
 				break;
 			case GameStage::Game:
-				
 				break;
 		}
 		// 绘制
-		switch (game_stage)
-		{
-			case GameStage::Menu:
-				// loadimage(&img,_T("images/background_menu.png"), 1280, 720, true);
-				// putimage_alpha(0, 0, &img);
-				menu_btn_start.Draw(_T("Start"));
-				menu_btn_quit.Draw(_T("Quit"));
-				break;
-			case GameStage::LevelSelect:
-				putimage_alpha(0, 0, &img_select_level_background);
-				for (int i=0; i<level_number; ++i)
-				{
-					level_select_btn_list[i].Draw(_T(std::to_string(i+1).c_str()));
-				}
-				menu_btn_quit.Draw(_T("Quit"));
-				break;
-			case GameStage::Game:
-				putimage_alpha(0, 0, &img_game_background);
-				menu_btn_quit.Draw(_T("Quit"));
-				cur_level->Draw();
-				
-				break;
-		}
-
+        scene_manager.Draw();
 		if (is_game_quited == true) break;
 		FlushBatchDraw();
 		DWORD end_time = GetTickCount();
