@@ -14,6 +14,12 @@ const int window_height = 720;
 const int block_width = 40;
 const int block_height = 40;
 
+const int slider_width = 60;
+const int slider_height = 30;
+
+const int space_width = 50;
+const int space_height = 50;
+
 const int block_move_speed = 10;
 
 const int INF = 0x3f3f3f3f;
@@ -34,6 +40,7 @@ std::ifstream fin;
 std::ofstream fout;
 
 IMAGE img_menu_background;
+IMAGE img_select_level_background;
 IMAGE img_game_background;
 
 IMAGE img_block;
@@ -46,6 +53,7 @@ void init_select_level();
 void load_resources()
 {
 	loadimage(&img_menu_background,_T("images/menu_background.png"), 1280, 720, true);
+	loadimage(&img_select_level_background, _T("images/img_select_level_background.jpg"), 1280, 720, true);
 	loadimage(&img_game_background, _T("images/game_background.png"), 1280, 720, true);
 	loadimage(&img_block, _T("images/block.png"), block_width, block_height, true);
 	loadimage(&img_btn_default, _T("images/btn_default.png"), button_width, button_height, true);
@@ -59,6 +67,13 @@ void putimage_alpha(int x, int y, IMAGE* img)
 	int w = img->getwidth();			// Get the width of the image
 	int h = img->getheight();
 	AlphaBlend(GetImageHDC(NULL), x, y, w, h, GetImageHDC(img), 0, 0, w, h, {AC_SRC_OVER, 0, 255, AC_SRC_ALPHA});
+}
+void outtextxy_shaded(int x, int y, LPCTSTR str, COLORREF color)
+{
+    settextcolor(RGB(45, 45, 45));
+    outtextxy(x+3, y+3, str);
+    settextcolor(color);
+    outtextxy(x, y, str);
 }
 // class Animation
 // {
@@ -80,9 +95,10 @@ void init_game();
 class Block
 {
 	public:
-		Block(RECT pos, int color, LPCTSTR path_block)
+		Block(RECT pos, int color, LPCTSTR path_block, int value)
 		{
 			position = pos;
+			this->value = value;
 			loadimage(&img, path_block);
 		}
 		~Block() = default;
@@ -95,7 +111,7 @@ class Block
 			settextstyle(20, 0, _T("monospace"));//设置字体
 			//outtextxy(position.left+10, position.top+40, str);//输出文字
 			// drawtext(_T((std::to_string(1)).c_str()), &position, DT_CENTER);
-			drawtext(_T("123978"), &position, DT_CENTER);
+			drawtext(_T(std::to_string(value).c_str()), &position, DT_CENTER);
 		}
 		void move()
 		{
@@ -218,6 +234,7 @@ class LevelSelectButton : public Button
 			game_stage = GameStage::Game;
 			level_value = value;
 			init_game();
+			puts("INIT");
 		}
 	private:
 		int value;
@@ -227,75 +244,140 @@ std::vector<LevelSelectButton> level_select_btn_list;
 class Slider
 {
 	public:
-		Slider(RECT pos, LPCTSTR path_btn_default, LPCTSTR path_btn_hovered, LPCTSTR path_btn_pushed)
+		Slider(RECT pos, LPCTSTR str)
 		{
 			position = pos;
-			loadimage(&btn_default, path_btn_default);
-			loadimage(&btn_hovered, path_btn_hovered);
-			loadimage(&btn_pushed, path_btn_pushed);
+			cur_x = pos.left;
+			cur_y = pos.top;
+			stage = Stage::Default;
+			this->str = str;
 		}
 		~Slider() = default;
-		void draw(LPCTSTR str)
+		void draw()
 		{
-			switch (stage)
-			{
-				case Stage::Default:
-					putimage(position.left, position.top, &img_btn_default);
-					break;
-				case Stage::Hovered:
-					putimage(position.left, position.top, &img_btn_hovered);
-					break;
-				case Stage::Pushed:
-					putimage(position.left, position.top, &img_btn_pushed);
-					break;
-			}
-
+			setfillcolor(RGB(45, 45, 45));
+			solidrectangle(position.left+3, position.top+3, position.right+3, position.bottom+3);
+			setfillcolor(BLUE);
+			solidrectangle(position.left, position.top, position.right, position.bottom);
 			settextstyle(20, 0, _T("monospace"));//设置字体
 			//outtextxy(position.left+10, position.top+40, str);//输出文字
 			drawtext(str, &position, DT_CENTER);
 		}
-		virtual void ProcessMessage(ExMessage msg)
+		void ProcessMessage(ExMessage msg)
 		{
+			// switch (msg.message)
+			// {
+			// 	case WM_MOUSEMOVE:
+			// 		if (stage == Stage::Default && CheckCursorInSlider(msg.x, msg.y))
+			// 			stage = Stage::Hovered;
+			// 		else if (stage == Stage::Hovered && !CheckCursorInSlider(msg.x, msg.y))
+			// 			stage = Stage::Pushed;
+			// 		// else if (stage == Stage::Default)
+			// 		// {
+			// 		// 	int delta_x = msg.x - cur_x;
+			// 		// 	int delta_y = msg.y - cur_y;
+			// 		// 	position = {position.left + delta_x, position.top + delta_y, position.right + delta_x, position.bottom + delta_y};
+			// 		// 	std::cout << "msg:x: " << msg.x << " y: " << msg.y << std::endl;
+			// 		// 	std::cout << "cur:x: " << cur_x << " y: " << cur_y << std::endl;
+			// 		// 	std::cout << "delta:x: " << delta_x << " y: " << delta_y << std::endl;
+			// 		// 	cur_x = msg.x;
+			// 		// 	cur_y = msg.y;
+			// 		// }
+			// 		break;
+			// 	case WM_LBUTTONDOWN:
+			// 		if (stage == Stage::Hovered)
+			// 		{
+			// 			stage = Stage::Pushed;	
+			// 			cur_x = msg.x;
+			// 			cur_y = msg.y;
+			// 		}
+			// 		break;
+			// 	// case WM_LBUTTONUP:
+			// 	// 	if (stage == Stage::Pushed)
+			// 	// 		OnClick();
+			// 	// 	break;
+			// 	default:
+			// 		break;
+			// }
 			switch (msg.message)
 			{
 				case WM_MOUSEMOVE:
-					if (stage == Stage::Default && CheckCursorInSlider(msg.x, msg.y))
+					if (stage == Stage::Pushed)
+					{
+						int delta_x = msg.x - cur_x;
+						int delta_y = msg.y - cur_y;
+						position = {position.left + delta_x, position.top + delta_y, position.right + delta_x, position.bottom + delta_y};
+						cur_x = msg.x;
+						cur_y = msg.y;
+						// 确保滑块不会超出窗口边界
+						if (position.left < 0) position.left = 0;
+						if (position.top < 0) position.top = 0;
+						if (position.right > window_width) position.right = window_width;
+						if (position.bottom > window_height) position.bottom = window_height;
+						position.right = position.left + slider_width;
+						position.bottom = position.top + slider_height;
+					}
+					else if (stage == Stage::Default && CheckCursorInSlider(msg.x, msg.y))
 						stage = Stage::Hovered;
 					else if (stage == Stage::Hovered && !CheckCursorInSlider(msg.x, msg.y))
 						stage = Stage::Default;
 					break;
 				case WM_LBUTTONDOWN:
 					if (stage == Stage::Hovered)
+					{
 						stage = Stage::Pushed;
+						cur_x = msg.x;
+						cur_y = msg.y;
+					}
 					break;
 				case WM_LBUTTONUP:
 					if (stage == Stage::Pushed)
-						OnClick();
+						stage = Stage::Hovered;
 					break;
 				default:
 					break;
 			}
 		}
 	protected:
-		virtual void OnClick() = 0;//在子类按钮按下时重写逻辑
+		//virtual void OnClick() = 0;//在子类按钮按下时重写逻辑
+		void OnClick(){return;};
 		enum class Stage
 		{
 			Default = 0,//默认
 			Hovered,//光标
 			Pushed,//按下
 		};
-		Stage stage = Stage::Default;
+		enum class Type
+		{
+			Inbox = 0,
+			Outbox,
+			CopyFrom,
+			CopyTo,
+			Add,
+			Sub,
+			Jump,
+			JumpIfZero
+		};
+		int type;
+		Stage stage;
 	private:
+		LPCTSTR str;
 		RECT position;
-		IMAGE btn_default;
-		IMAGE btn_hovered;
-		IMAGE btn_pushed;
+		int cur_x, cur_y;
 		bool CheckCursorInSlider(int x, int y)
 		{
 			return position.left <= x && x <= position.right && position.top <= y && y <= position.bottom;
 		}
 };
 
+
+// std::vector<Slider*> slider_list;
+
+std::string String[8] = {"0", "1", "2", "3", "4", "5", "6", "7"};
+struct operation
+{
+	int type;
+};
 class Level{
 	public:
 		Level(LPCTSTR path)
@@ -328,12 +410,43 @@ class Level{
 			fin.seekg(0, std::ios::beg);
 		}
 		~Level() = default;
-	protected:
+		void init_game()
+		{
+			//箱子初始化
+			block_list.clear();
+			std:: cout << "game_id is "  << level_value << std::endl;
+			int cur_block_top = 400, cur_block_left = 20;
+			for (int i : level_list[level_value-1].std_input)
+			{
+				RECT pos = {cur_block_left, cur_block_top, cur_block_left + block_width, cur_block_top + block_height};
+				block_list.push_back(Block(pos, 0, _T("images/block.png"), i));
+				cur_block_top += block_height + 10;
+			}
+			//操作滑块初始化
+			slider_list.clear();
+			int cur_slider_top = 100, cur_slider_left = 900;
+			for (int i = 0; i < 8; i++)
+			{
+				RECT pos = {cur_slider_left, cur_slider_top, cur_slider_left + slider_width, cur_slider_top + slider_height};
+				
+				slider_list.push_back(Slider(pos,_T(String[i].c_str())));
+				//Slider* slider = new Slider(pos,_T(String[i].c_str()));
+				//slider_list.push_back(slider);
+				cur_slider_top += slider_height + 10;
+			}
+			// puts("YES");
+			//空地初始化
+			int x = level_list[level_value-1].available_space;
+		}
+	private:
 		int is_useful;
 		int available_space;
 		int input_size, output_size;
 		std::vector<int> std_input,std_output;
+		std::vector<Block> block_list;
+		std::vector<Slider> slider_list;
 };
+
 std::vector<Level> level_list;
 void init_select_level()
 {
@@ -345,25 +458,13 @@ void init_select_level()
 	int mid = (level_number+1)/2;
 	for (int i = 1; i <= level_number; i++)
 	{
-		std::cout << "i=" << i << std::endl;
 		std::string path = "level_info/level_" + std::to_string(i) + ".bin";
 		level_list.push_back(Level(_T(path.c_str())));
 		level_select_btn_list.push_back(LevelSelectButton({(window_width-button_width)/2+ i*200 - mid*200, window_height/2+100, (window_width-button_width)/2+ i*200 - mid*200 + button_width, window_height/2+100+button_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"), i));
 	}
-	
 }
-std::vector<Block> block_list;
-void init_game()
-{
-	std:: cout << "game_id is "  << level_value << std::endl;
-	int cur_block_top = 400, cur_block_left = 20;
-	for (int i = 0; i < 10; i++)
-	{
-		RECT pos = {cur_block_left, cur_block_top, cur_block_left + block_width, cur_block_top + block_height};
-		block_list.push_back(Block(pos, 0, _T("images/block.png")));
-		cur_block_top += block_height + 10;
-	}
-}
+
+
 int main()
 {
 	initgraph(1280, 720);
@@ -434,6 +535,7 @@ int main()
 							break;
 					}
 					menu_btn_quit.ProcessMessage(msg);
+					for (Slider &slider : slider_list) slider.ProcessMessage(msg);
 					break;
 			}
 		}
@@ -458,7 +560,7 @@ int main()
 				menu_btn_quit.draw(_T("Quit"));
 				break;
 			case GameStage::LevelSelect:
-				putimage_alpha(0, 0, &img_menu_background);
+				putimage_alpha(0, 0, &img_select_level_background);
 				for (int i=0; i<level_number; ++i)
 				{
 					level_select_btn_list[i].draw(_T(std::to_string(i+1).c_str()));
@@ -469,6 +571,7 @@ int main()
 				putimage_alpha(0, 0, &img_game_background);
 				menu_btn_quit.draw(_T("Quit"));
 				for (Block block : block_list) block.draw(RED);
+				for (Slider &slider : slider_list) slider.draw();
 				break;
 		}
 
@@ -482,5 +585,6 @@ int main()
 		}
 	}
 	EndBatchDraw();
+	// Delete();
 	return 0;
 }
