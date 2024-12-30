@@ -1,4 +1,4 @@
-#include "level.hpp"
+#include "main.hpp"
 
 Level::Level(LPCTSTR path)
 {

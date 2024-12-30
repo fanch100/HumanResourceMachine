@@ -26,6 +26,7 @@ const double eps = 1e-6;
 bool is_game_started = false;
 bool is_game_quited = false;
 
+GameStage game_stage = GameStage :: Menu;
 IMAGE img;
 int level_value = 0;
 Level* cur_level = nullptr;

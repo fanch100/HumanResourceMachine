@@ -1,9 +1,9 @@
 #pragma once
 
 #include "classes.hpp"
-#include "button.hpp"
-#include "Block.hpp"
-#include "Slider.hpp"
+// #include "button.hpp"
+// #include "Block.hpp"
+// #include "Slider.hpp"
 
 extern std::ifstream fin;
 extern std::ofstream fout;

@@ -1,4 +1,4 @@
-#include "block.hpp"
+#include "main.hpp"
 Block::Block(RECT pos, int color, LPCTSTR path_block, int value)
 {
     position = pos;

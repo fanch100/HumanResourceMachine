@@ -1,4 +1,4 @@
-#include "game_scene.hpp"
+#include "main.hpp"
 
 GameScene::GameScene() = default;
 GameScene::~GameScene() = default;

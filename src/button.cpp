@@ -1,4 +1,4 @@
-#include "button.hpp"
+#include "main.hpp"
 
 
 Button::Button(RECT pos, LPCTSTR path_btn_default, LPCTSTR path_btn_hovered, LPCTSTR path_btn_pushed)

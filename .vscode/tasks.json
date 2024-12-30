@@ -92,7 +92,6 @@
                 // "-g",
                 "./src/main.cpp",
                 "./src/tool.cpp",
-                "./src/game_stage.cpp",
                 "./src/button.cpp",
                 "./src/start_button.cpp",
                 "./src/level_select_button.cpp",

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "classes.hpp"
 #include "scene.hpp"
 #include "tool.hpp"
 

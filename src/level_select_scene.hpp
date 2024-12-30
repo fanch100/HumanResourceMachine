@@ -1,11 +1,11 @@
 #pragma once
 
 #include "classes.hpp"
-
 #include "scene.hpp"
-#include "scene_manager.hpp"
-#include "button.hpp"
-#include "tool.hpp"
+
+// #include "scene_manager.hpp"
+// #include "button.hpp"
+// #include "tool.hpp"
 
 extern IMAGE menu_background;
 

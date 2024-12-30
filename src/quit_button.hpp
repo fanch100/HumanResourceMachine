@@ -3,8 +3,8 @@
 #include "button.hpp"
 #include "tool.hpp"
 #include "classes.hpp"
-#include "game_stage.hpp"
-#include "level.hpp"
+// #include "game_stage.hpp"
+// #include "level.hpp"
 
 extern bool is_game_quited;
 

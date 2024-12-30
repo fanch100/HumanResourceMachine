@@ -2,8 +2,8 @@
 
 #include "classes.hpp"
 #include "scene.hpp"
-#include "button.hpp"
-#include "scene_manager.hpp"
+// #include "button.hpp"
+// #include "scene_manager.hpp"
 
 extern IMAGE game_background;
 extern IMAGE block;

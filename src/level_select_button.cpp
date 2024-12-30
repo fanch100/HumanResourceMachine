@@ -1,4 +1,4 @@
-#include "level_select_button.hpp"
+#include "main.hpp"
 
 
 LevelSelectButton::LevelSelectButton(RECT pos, LPCTSTR path_btn_default, LPCTSTR path_btn_hovered, LPCTSTR path_btn_pushed, int val) : Button(pos, path_btn_default, path_btn_hovered, path_btn_pushed),value(val){ }

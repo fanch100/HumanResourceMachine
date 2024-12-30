@@ -2,7 +2,7 @@
 
 #include "classes.hpp"
 #include "tool.hpp"
-#include "game_stage.hpp"
+// #include "game_stage.hpp"
 
 extern const int window_width;
 extern const int window_height;

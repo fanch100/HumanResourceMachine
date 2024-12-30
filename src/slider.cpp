@@ -1,4 +1,4 @@
-#include "slider.hpp"
+#include "main.hpp"
 
 
 Slider::Slider(RECT pos, LPCTSTR str)

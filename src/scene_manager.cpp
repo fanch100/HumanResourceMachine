@@ -1,4 +1,4 @@
-#include "scene_manager.hpp"
+#include "main.hpp"
 
 SceneManager::SceneManager() = default;
 SceneManager::~SceneManager() = default;

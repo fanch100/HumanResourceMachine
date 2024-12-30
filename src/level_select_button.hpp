@@ -2,11 +2,11 @@
 
 
 #include "classes.hpp"
-
 #include "button.hpp"
-#include "tool.hpp"
-#include "game_stage.hpp"
-#include "level.hpp"
+
+// #include "tool.hpp"
+// #include "game_stage.hpp"
+// #include "level.hpp"
 
 extern GameStage game_stage;
 extern bool is_game_started;

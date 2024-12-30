@@ -1,4 +1,4 @@
-#include "menu_scene.hpp"
+#include "main.hpp"
 
 MenuScene::MenuScene() = default;
 MenuScene::~MenuScene() = default;

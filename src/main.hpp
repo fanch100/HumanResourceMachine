@@ -1,16 +1,22 @@
 #pragma once
 
 #include "classes.hpp"
-#include "game_stage.hpp"
 #include "tool.hpp"
-#include "Level.hpp"
+#include "level.hpp"
+#include "block.hpp"
+#include "slider.hpp"
+
+#include "button.hpp"
 #include "start_button.hpp"
 #include "level_select_button.hpp"
 #include "quit_button.hpp"
+
+#include "scene.hpp"
 #include "scene_manager.hpp"
 #include "menu_scene.hpp"
 #include "game_scene.hpp"
 #include "level_select_scene.hpp"
+
 
 
 void init_select_level();
