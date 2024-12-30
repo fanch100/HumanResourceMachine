@@ -19,7 +19,7 @@ class Level
 		void ProcessMessage(const ExMessage &msg);
 		void InitGame();
 		void QuitGame();
-        
+
 	// 	int inbox(int cur_step){
 	// 		++nxt_input;
 	// //        printf("nxt_input=%d std.size=%d\n",nxt_input,std_input.size());
@@ -85,4 +85,5 @@ class Level
 		std::vector<Block*> free_space; 
 		Block* cur_block = (Block*)nullptr;
     	int nxt_input=-1;
+        TextBox* input_box = nullptr;
 };

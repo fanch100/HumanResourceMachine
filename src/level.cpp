@@ -33,10 +33,12 @@ void Level::Draw()
 {
     for (Block block : block_list) block.Draw(RED);
     for (Slider &slider : slider_list) slider.Draw();
+    input_box->Draw();
 }
 void Level::ProcessMessage(const ExMessage &msg)
 {
     for (Slider &slider : slider_list) slider.ProcessMessage(msg);
+    input_box->ProcessMessage(msg);
 }
 void Level::InitGame()
 {
@@ -70,6 +72,10 @@ void Level::InitGame()
     {
         this->free_space.push_back((Block*)nullptr);
     }
+    //文本框初始化
+    int cur_text_box_top = 600, cur_text_box_left = 900;
+    input_box = new TextBox();
+    input_box->Init(RECT{ cur_text_box_left, cur_text_box_top, cur_text_box_left + 100, cur_text_box_top + 100}, 100);
 }
 void Level::QuitGame()
 {
@@ -79,6 +85,11 @@ void Level::QuitGame()
     // free_space.clear();
     // cur_block = *(Block*)nullptr;
     this->nxt_input = -1;
+    // if (input_box != nullptr) 
+    // {
+    //     delete input_box;
+    //     input_box = nullptr; // 设置为 nullptr 避免重复删除
+    // }
 }
 	// 	int inbox(int cur_step){
 	// 		++nxt_input;

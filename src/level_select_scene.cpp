@@ -5,6 +5,7 @@ LevelSelectScene::LevelSelectScene() = default;
 LevelSelectScene::~LevelSelectScene() = default;
 void LevelSelectScene::Init()
 {
+    
     std::cout << "SelectLevel Scene Init" << std::endl;
 }
 void LevelSelectScene::Draw()

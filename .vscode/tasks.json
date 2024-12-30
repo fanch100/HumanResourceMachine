@@ -42,10 +42,10 @@
                 "-lole32",
                 "-lmsimg32",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "HumanResourceMachine.exe"
             ],
             "options": {
-                "cwd": "${fileDirname}"
+                "cwd": "${workspaceFolder}"
             },
             "problemMatcher": [
                 "$gcc"
@@ -106,6 +106,7 @@
                 "./src/menu_scene.cpp",
                 "./src/level_select_scene.cpp",
                 "./src/game_scene.cpp",
+                "./src/text_box.cpp",
                 "-leasyx",
                 "-lgdi32",
                 "-lole32",

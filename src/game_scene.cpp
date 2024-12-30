@@ -4,6 +4,8 @@ GameScene::GameScene() = default;
 GameScene::~GameScene() = default;
 void GameScene::Init()
 {
+    cur_level->InitGame();
+
     std::cout << "Game Scene Init" << std::endl;
 }
 void GameScene::Draw()
@@ -40,5 +42,6 @@ void GameScene::ProcessMessage(const ExMessage &msg)
 }
 void GameScene::Quit()
 {
+    cur_level->QuitGame();
     std::cout << "Game Scene Quit" << std::endl;
 }

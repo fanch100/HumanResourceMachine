@@ -33,9 +33,9 @@ void Button::ProcessMessage(const ExMessage &msg)
     switch (msg.message)
     {
         case WM_MOUSEMOVE:
-            if (stage == Stage::Default && CheckCursorInButton(msg.x, msg.y))
+            if (stage != Stage::Pushed && CheckCursorInButton(msg.x, msg.y))
                 stage = Stage::Hovered;
-            else if (stage == Stage::Hovered && !CheckCursorInButton(msg.x, msg.y))
+            else if (stage != Stage::Pushed && !CheckCursorInButton(msg.x, msg.y))
                 stage = Stage::Default;
             break;
         case WM_LBUTTONDOWN:
@@ -46,7 +46,7 @@ void Button::ProcessMessage(const ExMessage &msg)
             if (stage == Stage::Pushed)
             {
                 OnClick();
-                stage = Stage::Hovered;
+                stage = Stage::Default;
             }
             break;
         default:
