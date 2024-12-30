@@ -25,6 +25,7 @@ class Block;
 class Slider;
 class Level;
 class TextBox;
+class Player;
 
 enum class GameStage {
     Menu = 0,

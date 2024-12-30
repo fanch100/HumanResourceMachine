@@ -3,8 +3,10 @@
 #include "classes.hpp"
 #include "tool.hpp"
 #include "level.hpp"
+
 #include "block.hpp"
 #include "slider.hpp"
+#include "player.hpp"
 
 #include "button.hpp"
 #include "start_button.hpp"
