@@ -50,3 +50,8 @@ int Block::GetValue()
 {
     return this->value;
 }
+
+RECT Block::GetPosition()
+{
+    return this->position;
+}

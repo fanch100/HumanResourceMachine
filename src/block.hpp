@@ -18,6 +18,7 @@ class Block
 		bool Move(int x, int y);
 		void SetValue(int value);
 		int GetValue();
+		RECT GetPosition();
 	private:
 		RECT position;
 		int value;

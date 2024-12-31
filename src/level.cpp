@@ -71,17 +71,19 @@ void Level::Draw()
     for (Slider &slider : slider_list) slider.Draw();
     for (Space &space : space_list) space.Draw(RED);
     player->Draw();
+    if (game_scene.is_playing)
+    {
+        game_scene.operation_list[cur_step-1].DrawTriangle();
+    }
+    // POINT pts[] = { {50, 100}, {200, 200}, {200, 50} };
+    // fillpolygon(pts, 3);
 }
 void Level::ProcessMessage(const ExMessage &msg)
 {
     for (Slider &slider : slider_list) slider.ProcessMessage(msg);
     //for (Space &space : space_list) space.ProcessMessage(msg);//没有写
 }
-void Level::Update()
-{
-    bool is_finish = player->Move(500, 500);
-    std:: cout << "is_finish is " << is_finish << std::endl;
-}
+
 void Level::InitGame()
 {
     //箱子初始化
@@ -131,6 +133,9 @@ void Level::InitGame()
     
     //Player初始化
     player = new Player(RECT{20, 20, 20 + player_width, 20 + player_height});
+
+    //初始化
+    cur_step = 1;
 }
 void Level::QuitGame()
 {
@@ -152,88 +157,169 @@ void Level::QuitGame()
     
     std :: cout << "Level::QuitGame()" << std :: endl;
 }
-	// 	int inbox(int cur_step){
-	// 		++nxt_input;
-	// //        printf("nxt_input=%d std.size=%d\n",nxt_input,std_input.size());
-	// 		if (nxt_input>=std_input.size()) return input_size + 1;
-	// 		cur_block = std_input[nxt_input];
-	// 		return cur_step + 1;
-	// 	}
-	// 	int outbox(int cur_step){
-	// 		if (cur_block==INF) return -1;
-	// 		user_output.push_back(cur_block);
-	// 		cur_block = INF;
-	// 		return cur_step+1;
-	// 	}
-	// 	int copyfrom(int cur_step,int x){
-	// 		if (x>available_space || block[x]==INF) return -1;
-	// 		cur_block = block[x];
-	// 		return cur_step+1;
-	// 	}
-	// 	int copyto(int cur_step,int x){
-	// 		if (x>available_space || cur_block==INF) return -1;
-	// 		block[x] = cur_block;
-	// 		return cur_step+1;
-	// 	}
-	// 	int add(int cur_step,int x){
-	// 		if (x>available_space || cur_block==INF || block[x]==INF) return -1;
-	// 		cur_block += block[x];
-	// 		return cur_step+1;
-	// 	}
-	// 	int sub(int cur_step,int x){
-	// 		if (x>available_space || cur_block==INF || block[x]==INF) return -1;
-	// 		cur_block -= block[x];
-	// 		return cur_step+1;
-	// 	}
-	// 	int jump(int x){
-	// 		if (x>n) return -1;
-	// 		return x;
-	// 	}
-	// 	int jumpifzero(int cur_step,int x){
-	// 		if (x>n || cur_block==INF) return -1;
-	// 		return (!cur_block)?x:cur_step+1;
-	// 	}
-int GetNextStep(int cur_step){
-    // int op=a[cur_step].op, x=a[cur_step].x;
-    // if (!is_useful[op]) return -1;
-    // if (op==1) return inbox(cur_step);
-    // else if (op==2) return outbox(cur_step);
-    // else if (op==3) return copyfrom(cur_step,x);
-    // else if (op==4) return copyto(cur_step,x);
-    // else if (op==5) return add(cur_step,x);
-    // else if (op==6) return sub(cur_step,x);
-    // else if (op==7) return jump(x);
-    // else if (op==8) return jumpifzero(cur_step,x);
+// int Level::Inbox(int cur_step){
+//     ++nxt_input;
+// //        printf("nxt_input=%d std.size=%d\n",nxt_input,std_input.size());
+//     if (nxt_input>=std_input.size()) return input_size + 1;
+//     cur_block = std_input[nxt_input];
+//     return cur_step + 1;
+// }
+// int Level::Outbox(int cur_step){
+//     if (cur_block==INF) return -1;
+//     user_output.push_back(cur_block);
+//     cur_block = INF;
+//     return cur_step+1;
+// }
+// int Level::Copyfrom(int cur_step,int x){
+//     if (x>available_space || block[x]==INF) return -1;
+//     cur_block = block[x];
+//     return cur_step+1;
+// }
+// int copyto(int cur_step,int x){
+//     if (x>available_space || cur_block==INF) return -1;
+//     block[x] = cur_block;
+//     return cur_step+1;
+// }
+// int add(int cur_step,int x){
+//     if (x>available_space || cur_block==INF || block[x]==INF) return -1;
+//     cur_block += block[x];
+//     return cur_step+1;
+// }
+// int sub(int cur_step,int x){
+//     if (x>available_space || cur_block==INF || block[x]==INF) return -1;
+//     cur_block -= block[x];
+//     return cur_step+1;
+// }
+// int jump(int x){
+//     if (x>n) return -1;
+//     return x;
+// }
+// int jumpifzero(int cur_step,int x){
+//     if (x>n || cur_block==INF) return -1;
+//     return (!cur_block)?x:cur_step+1;
+// }
+int Level::GetNextStep(int cur_step){
+    int op = game_scene.operation_list[cur_step-1].GetType();
+    int x = game_scene.operation_list[cur_step-1].GetValue();
+    std :: cout << "op = " << op << std::endl;
+    std :: cout << "useful = " << is_useful << std::endl;
+    
+    
+    if (!(is_useful>>(op-1)&1)) return -1;
+    if (op == (int)OperationType::Inbox) //inbox 只有结束
+    {
+        std::cout << "inbox " << x << std::endl;
+        ++nxt_input;
+        if (nxt_input >= std_input.size()) return input_size + 1;
+        return cur_step + 1;
+    }
+    else if (op == (int)OperationType::Outbox) 
+    {
+        if (cur_block == nullptr) return -1;
+        return cur_step+1;
+    }
+    else if (op == (int)OperationType::CopyFrom)
+    {
+        if (x>available_space || space_list[x].GetBlock() == nullptr ) return -1;
+        return cur_step+1;
+    }
+    else if (op == (int)OperationType::CopyTo) 
+    {
+        if (x>available_space || cur_block == nullptr) return -1;
+        return cur_step + 1;
+    }
+    else if (op == (int)OperationType::Add)
+    {
+        if (x>available_space || cur_block == nullptr || space_list[x].GetBlock() == nullptr) return -1;
+        return cur_step + 1;
+    }
+    else if (op == (int)OperationType::Sub) 
+    {
+        if (x>available_space || cur_block == nullptr || space_list[x].GetBlock() == nullptr) return -1;
+        return cur_step + 1;
+    }
+    else if (op == (int)OperationType::Jump) 
+    {
+        if (x > game_scene.operation_list.size()) return -1;
+        return x;
+    }
+    else if (op == (int)OperationType::JumpIfZero) 
+    {
+        if (x > game_scene.operation_list.size() || cur_block == nullptr) return -1;
+        if (cur_block->GetValue() == 0) return x;
+        else return cur_step + 1;
+    }
     return -1;
 }
-bool chk(){
-    // if (user_output.size()!=std_output.size()) return 0;
-    // else {
-    //     for (int i=0;i<user_output.size();++i){
-    //         if (user_output[i]!=std_output[i]) return 0;
-    //     }
-    // }
-    return 1;
-}
-void Play(){
-    int cur_step = 1;
-    int operation_size = game_scene.operation_list.size(); 
-    while(cur_step <= operation_size){
-//            printf("cur_step=%d\n",cur_step);
-        int nxt_step=GetNextStep(cur_step);
-//            printf("nxt_step=%d\n",nxt_step);
-        if (nxt_step==-1){
-            printf("Error on instruction %d\n",cur_step);
-            return;
-        }
-        cur_step=nxt_step;
+// bool Level::chk(){
+//     // if (user_output.size()!=std_output.size()) return 0;
+//     // else {
+//     //     for (int i=0;i<user_output.size();++i){
+//     //         if (user_output[i]!=std_output[i]) return 0;
+//     //     }
+//     // }
+//     return 1;
+// }
+bool Level::Play(int cur_step){
+    int op = game_scene.operation_list[cur_step-1].GetType();
+    int x = game_scene.operation_list[cur_step-1].GetValue();
+    if (op == (int)OperationType::Inbox) //inbox 只有结束
+    {
+        return player->Move(inbox_pos.x, inbox_pos.y);
+        RECT pos = player->GetPosition();
     }
-//        for (int i=0;i<std_output.size();++i) printf("i=%d out=%d\n",i,std_output[i]);
-//        for (int i=0;i<user_output.size();++i) printf("i=%d out=%d\n",i,user_output[i]);
-    if (chk()) puts("Success");
-    else puts("Fail");
+    else if (op == (int)OperationType::Outbox) 
+    {
+        return player->Move(outbox_pos.x, outbox_pos.y);
+    }
+    else if (op == (int)OperationType::CopyFrom)
+    {
+        RECT pos = space_list[x].GetPosition();
+        return player->Move(pos.left, pos.top);
+    }
+    else if (op == (int)OperationType::CopyTo) 
+    {
+        RECT pos = space_list[x].GetPosition();
+        return player->Move(pos.left, pos.top);
+    }
+    else if (op == (int)OperationType::Add)
+    {
+        RECT pos = space_list[x].GetPosition();
+        return player->Move(pos.left, pos.top);
+    }
+    else if (op == (int)OperationType::Sub) 
+    {
+        RECT pos = space_list[x].GetPosition();
+        return player->Move(pos.left, pos.top);
+    }
+    else if (op == (int)OperationType::Jump) 
+    {
+        return 1;
+    }
+    else if (op == (int)OperationType::JumpIfZero) 
+    {
+        return 1;
+    }
+    return 0;
 }
-void Update()
+int Level::Update()
 {
-    
+    //player->Move(500, 500);
+    std:: cout << "is_finished is " << is_finished << std::endl;
+    int operation_size = game_scene.operation_list.size();
+    if (cur_step <= operation_size)
+    {
+        if (!is_finished)
+        {
+            is_finished = !Play(cur_step);
+        }
+        else
+        {
+            int nxt_step = GetNextStep(cur_step);
+            if (nxt_step == -1) return -1;
+            cur_step = nxt_step;
+            is_finished = false;
+        }
+    }
+    return 1;
 }

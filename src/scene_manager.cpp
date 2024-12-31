@@ -37,4 +37,4 @@ void SceneManager::SetScene(Scene *scene)
     current_scene = scene;
     current_scene->Init();
 }
-Scene* SceneManager::GetCurrentScene(){return (Scene*)nullptr;};
+//Scene* SceneManager::GetCurrentScene(){return (Scene*)nullptr;};

@@ -21,6 +21,9 @@ const int space_height = 50;
 const int operation_width = 200;
 const int operation_height = 50;
 
+const Point inbox_pos = {300, 20};
+const Point outbox_pos = {600, 50};
+
 const int move_speed = 5;
 
 const int INF = 0x3f3f3f3f;
@@ -151,6 +154,7 @@ MenuQuitButton menu_btn_quit = MenuQuitButton({(window_width-button_width)/2+200
 LevelSelectQuitButton level_select_btn_quit = LevelSelectQuitButton({window_width-button_width, window_height-button_height, window_width, window_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"));
 GameQuitButton game_btn_quit = GameQuitButton({window_width-button_width, window_height-button_height, window_width, window_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"));
 GamePlayButton game_play_btn = GamePlayButton({900, 600, 900 + button_width, 600 + button_height}, _T("images/game_play_btn_default.png"), _T("images/game_play_btn_hovered.png"), _T("images/game_play_btn_pushed.png"));
+GameStopButton game_stop_btn = GameStopButton({900, 700, 900 + button_width, 700 + button_height}, _T("images/game_play_btn_default.png"), _T("images/game_play_btn_hovered.png"), _T("images/game_play_btn_pushed.png"));
 GameFileInputButton game_file_input_btn = GameFileInputButton({1000, 600, 1000 + button_width, 600 + button_height}, _T("images/game_play_btn_default.png"), _T("images/game_play_btn_hovered.png"), _T("images/game_play_btn_pushed.png"));
 
 int main()

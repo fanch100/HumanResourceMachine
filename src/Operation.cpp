@@ -17,3 +17,19 @@ void Operation::Draw(int color)
     // drawtext(_T((std::to_string(1)).c_str()), &position, DT_CENTER);
     drawtext(_T(operation_number_to_name[value].c_str()), &position, DT_CENTER);
 }
+
+void Operation::DrawTriangle()
+{
+    setfillcolor(GREEN);
+    POINT points[] = {{position.left-20, position.top}, {position.left-20, position.bottom}, {position.left, (position.top+position.bottom)/2}};
+    fillpolygon(points, 3);
+}
+
+int Operation::GetValue()
+{
+    return value;
+}
+int Operation::GetType()
+{
+    return type;
+}

@@ -25,3 +25,11 @@ int Space::GetValue()
 {
     return this->value;
 }
+Block* Space::GetBlock()
+{
+    return this->block;
+}
+RECT Space::GetPosition()
+{
+    return this->position;
+}

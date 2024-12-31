@@ -24,7 +24,7 @@ class SceneManager
         void ProcessMessage(const ExMessage &msg);
         void ChangeScene(GameScene type);
         void SetScene(Scene *scene);
-        Scene *GetCurrentScene();
+        //Scene *GetCurrentScene();
     private:
         Scene *current_scene = nullptr;
 };

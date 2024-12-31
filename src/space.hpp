@@ -14,6 +14,8 @@ class Space
 		void Draw(int color);
 		void SetValue(int value);
 		int GetValue();
+		Block* GetBlock();
+		RECT GetPosition();
 	private:
 		RECT position;
 		int value;

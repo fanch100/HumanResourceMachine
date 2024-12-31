@@ -19,6 +19,7 @@ void Player::Draw()
 }
 bool Player::Move(int x, int y)
 {
+    std:: cout<< "Moving to :" << x << ' ' << y << std::endl;
     int delta_x = x - position.left;
     int delta_y = y - position.top;
     double dis = std::sqrt(delta_x * delta_x + delta_y * delta_y);
@@ -36,7 +37,15 @@ bool Player::Move(int x, int y)
         }
         position = {final_x, final_y, final_x + block_width, final_y + block_height};
     }
-    return (final_x==x) && (final_y == y);
+    if (block != nullptr)
+    {
+        RECT pos = block->GetPosition();
+        int delta_block_x = pos.left - final_x;
+        int delta_block_y = pos.top - final_y;
+        block->Move(x + delta_block_x, y + delta_block_y);
+    }
+    
+    return (final_x == x) && (final_y == y);
 }
 void Player::SetValue(int value)
 {
@@ -49,4 +58,8 @@ void Player::SetPosition(RECT pos)
 int Player::GetValue()
 {
     return value;
+}
+RECT Player::GetPosition()
+{
+    return position;
 }

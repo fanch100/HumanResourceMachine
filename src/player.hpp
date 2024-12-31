@@ -20,7 +20,9 @@ class Player
 		void SetValue(int value);
 		void SetPosition(RECT pos);
 		int GetValue();
+		RECT GetPosition();
 	private:
 		RECT position;
 		int value;
+		Block* block = nullptr;
 };

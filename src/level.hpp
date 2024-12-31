@@ -8,9 +8,12 @@
 extern std::ifstream fin;
 extern std::ofstream fout;
 extern int level_value;
+extern int operation_size;
 
 extern GameScene game_scene;
 
+extern const Point inbox_pos;
+extern const Point outbox_pos;
 
 class Level
 {
@@ -21,10 +24,10 @@ class Level
 		~Level();
 		void Draw();
 		void ProcessMessage(const ExMessage &msg);
-		void Update();
+		int Update();
 		void InitGame();
 		void QuitGame();
-        void Play();
+        bool Play(int cur_step);
 	// 	int inbox(int cur_step){
 	// 		++nxt_input;
 	// //        printf("nxt_input=%d std.size=%d\n",nxt_input,std_input.size());
@@ -80,6 +83,18 @@ class Level
 	// 		return -1;
 	// 	}
 	private:
+		enum class OperationType
+		{
+			Inbox = 1,
+			Outbox = 2,
+			CopyFrom = 3,
+			CopyTo = 4,
+			Add = 5,
+			Sub = 6,
+			Jump = 7,
+			JumpIfZero = 8,
+			Invalid = 9,
+		};
 		int is_useful;
 		int available_space;
 		int input_size, output_size;
@@ -92,6 +107,8 @@ class Level
         Player* player = (Player*)nullptr;
 		Block* cur_block = (Block*)nullptr;
     	int nxt_input = -1;
-		//int cur_step = 1;
+		int cur_step = 1;
+		bool is_failed = false;
+		bool is_finished = false;
         int GetNextStep(int cur_step);
 };

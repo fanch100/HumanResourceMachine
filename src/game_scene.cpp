@@ -22,7 +22,11 @@ void GameScene::Init()
         std::string str; char ch; int x=INF;
         while(fin.get(ch)) {
             if (ch == '\n' || ch == '\r' || ch == EOF) break;
-            if (isdigit(ch)) x=x*10+ch-'0';
+            if (isdigit(ch)) 
+            {
+                if (x == INF) x=0;
+                x=x*10+ch-'0';
+            }
             else if (('A'<=ch && ch<='Z') || ('a'<=ch && ch<='z')) {
                 ch = tolower(ch);
                 str = str + ch;
@@ -35,6 +39,7 @@ void GameScene::Init()
         if (str!="inbox" && str!="outbox" && x!=INF) ;//error，数字不匹配
         POINT cur_operation = {100 + (i-1)*(operation_height+2),1100};//top left
         RECT pos = {cur_operation.y, cur_operation.x, cur_operation.y + operation_width, cur_operation.x + operation_height};
+        std ::cout << "type = " << operation_name_to_number[str] << "x = " << x << std::endl;
         operation_list.push_back(Operation(pos,operation_name_to_number[str],x));
     }
     fin.close();
@@ -52,6 +57,7 @@ void GameScene::Draw()
     std :: cout << "Operation List Size = " << operation_list.size() << std :: endl;
     for (Operation &operation : operation_list) operation.Draw(RED);
     game_play_btn.Draw(_T("Play"));
+    game_stop_btn.Draw(_T("Stop"));
     game_file_input_btn.Draw(_T("Input File"));
     game_btn_quit.Draw(_T("Quit"));
     std::cout << "Game Scene Draw" << std::endl;
@@ -61,7 +67,8 @@ void GameScene::Update()
     std::cout << "Game Scene Update" << std::endl;
     if (is_playing)
     {
-        cur_level->Update();
+        int update_result = cur_level->Update();
+        if (update_result == -1) std::cout << "Game Over" << std::endl;
     }
 }
 void GameScene::ProcessMessage(const ExMessage &msg)

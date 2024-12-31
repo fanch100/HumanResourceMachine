@@ -100,6 +100,7 @@
                 "./src/level_select_quit_button.cpp",
                 "./src/game_quit_button.cpp",
                 "./src/game_play_button.cpp",
+                "./src/game_stop_button.cpp",
                 "./src/game_file_input_button.cpp",
 
                 "./src/scene.cpp",

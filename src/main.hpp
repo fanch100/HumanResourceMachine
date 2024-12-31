@@ -19,6 +19,7 @@
 #include "game_quit_button.hpp"
 #include "game_file_input_button.hpp"
 #include "game_play_button.hpp"
+#include "game_stop_button.hpp"
 
 #include "scene.hpp"
 #include "scene_manager.hpp"

@@ -9,6 +9,7 @@ extern IMAGE img_game_background;
 extern IMAGE block;
 
 extern GameQuitButton game_btn_quit;
+extern GameStopButton game_stop_btn;
 extern GamePlayButton game_play_btn;
 extern GameFileInputButton game_file_input_btn;
 extern std::ifstream fin;
