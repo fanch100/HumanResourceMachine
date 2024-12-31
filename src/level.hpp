@@ -82,8 +82,8 @@ class Level
 		std::vector<Block> block_list;
 		std::vector<Slider> slider_list;
 		std::vector<int> user_output;
-		std::vector<Block*> free_space; 
+		std::vector<Space> space_list; 
 		Block* cur_block = (Block*)nullptr;
     	int nxt_input=-1;
-        TextBox* input_box = nullptr;
+        
 };

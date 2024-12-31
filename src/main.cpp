@@ -40,6 +40,7 @@ IMAGE img_game_background;
 
 IMAGE img_block;
 IMAGE img_player;
+IMAGE img_space;
 
 IMAGE img_btn_default;
 IMAGE img_btn_hovered;
@@ -56,8 +57,12 @@ void load_resources()
 	loadimage(&img_menu_background,_T("images/menu_background.png"), 1280, 720, true);
 	loadimage(&img_level_select_background, _T("images/img_level_select_background.jpg"), 1280, 720, true);
 	loadimage(&img_game_background, _T("images/game_background.png"), 1280, 720, true);
+
 	loadimage(&img_block, _T("images/block.png"), block_width, block_height, true);
 	loadimage(&img_player, _T("images/player.png"), player_width, player_height, true);
+	loadimage(&img_space, _T("images/space.png"), space_width, space_height, true);
+
+
 	loadimage(&img_btn_default, _T("images/btn_default.png"), button_width, button_height, true);
 	loadimage(&img_btn_hovered, _T("images/btn_hovered.png"), button_width, button_height, true);
 	loadimage(&img_btn_pushed, _T("images/btn_pushed.png"), button_width, button_height, true);
@@ -93,6 +98,7 @@ std::vector<LevelSelectButton> level_select_btn_list;
 struct Operation
 {
 	int type, value;
+    RECT position;
 };
 std::vector<Operation> operation_list;
 
@@ -120,6 +126,8 @@ GameQuitButton game_btn_quit = GameQuitButton({window_width-button_width, window
 
 int main()
 {
+    std::freopen("./texts/test.out","w",stdout);
+
 	initgraph(1280, 720);
 	ExMessage msg;
 	load_resources();

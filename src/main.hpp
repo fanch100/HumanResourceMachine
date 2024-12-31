@@ -7,6 +7,8 @@
 #include "block.hpp"
 #include "slider.hpp"
 #include "player.hpp"
+#include "space.hpp"
+#include "text_box.hpp"
 
 #include "button.hpp"
 #include "start_button.hpp"
@@ -21,7 +23,7 @@
 #include "game_scene.hpp"
 #include "level_select_scene.hpp"
 
-#include "text_box.hpp"
+
 
 void init_select_level();
 void load_resources();

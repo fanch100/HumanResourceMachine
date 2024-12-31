@@ -33,12 +33,13 @@ void Level::Draw()
 {
     for (Block block : block_list) block.Draw(RED);
     for (Slider &slider : slider_list) slider.Draw();
-    input_box->Draw();
+    for (Space &space : space_list) space.Draw(RED);
+    
 }
 void Level::ProcessMessage(const ExMessage &msg)
 {
     for (Slider &slider : slider_list) slider.ProcessMessage(msg);
-    input_box->ProcessMessage(msg);
+    //for (Space &space : space_list) space.ProcessMessage(msg);//没有写
 }
 void Level::InitGame()
 {
@@ -49,7 +50,7 @@ void Level::InitGame()
     for (int i : std_input)
     {
         RECT pos = {cur_block_left, cur_block_top, cur_block_left + block_width, cur_block_top + block_height};
-        block_list.push_back(Block(pos, 0, _T("images/block.png"), i));
+        block_list.push_back(Block(pos, 0, i));
         cur_block_top += block_height + 10;
     }
     //操作滑块初始化
@@ -67,15 +68,28 @@ void Level::InitGame()
     }
     // puts("YES");
     //空地初始化
-    int x = available_space;
-    for (int i = 0; i < x; ++i)
+    
+    int space_top = 400, space_left = 400;
+    int space_row = (int)std::sqrt(available_space);
+    int space_column = (available_space == 0)? 0 : (available_space-1) / space_row +1;
+    std :: cout << "space_row: " << space_row  << std::endl;
+    std :: cout << "space_column: " << space_column << std::endl;
+    std :: cout << "available_space: " << available_space << std::endl;
+    space_top -= space_row * space_height / 2;
+    space_left -= space_column * space_width / 2;
+    for (int i = 0, k = 0; i < space_row && k < available_space; ++i)
     {
-        this->free_space.push_back((Block*)nullptr);
+        for (int j = 0; j < space_column && k < available_space; ++j, ++k)
+        {
+            RECT pos = {space_left+ j*space_width, space_top + i*space_height, space_left + (j+1)*space_width, space_top + (i+1)*space_height};
+            std :: cout << "pos.right = " << pos.right << std::endl;
+            std :: cout << "pos.bottom = " << pos.bottom << std::endl;
+            space_list.push_back(Space(pos, 0, k));
+        }
     }
     //文本框初始化
-    int cur_text_box_top = 600, cur_text_box_left = 900;
-    input_box = new TextBox();
-    input_box->Init(RECT{ cur_text_box_left, cur_text_box_top, cur_text_box_left + 100, cur_text_box_top + 100}, 100);
+    
+    
 }
 void Level::QuitGame()
 {
@@ -85,11 +99,8 @@ void Level::QuitGame()
     // free_space.clear();
     // cur_block = *(Block*)nullptr;
     this->nxt_input = -1;
-    // if (input_box != nullptr) 
-    // {
-    //     delete input_box;
-    //     input_box = nullptr; // 设置为 nullptr 避免重复删除
-    // }
+    
+    std :: cout << "Level::QuitGame()" << std :: endl;
 }
 	// 	int inbox(int cur_step){
 	// 		++nxt_input;

@@ -60,6 +60,7 @@ void TextBox::Draw()
 
 void TextBox::ProcessMessage(const ExMessage &msg)
 {
+    // std :: cout << "TextBox::ProcessMessage" << std::endl;
     setlinecolor(BLACK);          
     setbkcolor(WHITE);              
     setfillcolor(WHITE);                
@@ -88,6 +89,7 @@ void TextBox::ProcessMessage(const ExMessage &msg)
         case '\r':                // 用户按回车键，结束文本输入
         case '\n':
             is_input = false;
+            std :: cout << "Text=\"" << text  << '\"'<< std :: endl;
             break;
         default:                // 用户按其它键，接受文本输入
             if (len < maxlen - 1)

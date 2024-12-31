@@ -21,4 +21,5 @@ class GameScene : public Scene
         void ProcessMessage(const ExMessage &msg);
         void Quit();
     private:
+        TextBox* input_box = nullptr;
 };

@@ -11,7 +11,7 @@ extern const int block_height;
 class Block
 {
 	public:
-		Block(RECT pos, int color, LPCTSTR path_block, int value);
+		Block(RECT pos, int color, int value);
 		~Block();
 		void Draw(int color);
 		void Move(int x, int y);
@@ -20,5 +20,4 @@ class Block
 	private:
 		RECT position;
 		int value;
-		IMAGE img;
 };

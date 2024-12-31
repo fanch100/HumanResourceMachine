@@ -1,9 +1,8 @@
 #include "main.hpp"
-Block::Block(RECT pos, int color, LPCTSTR path_block, int value)
+Block::Block(RECT pos, int color, int value)
 {
     position = pos;
     this->value = value;
-    loadimage(&img, path_block);
 }
 Block::~Block() = default;
 void Block::Draw(int color)
