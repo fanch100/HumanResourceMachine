@@ -19,6 +19,8 @@ class Block
 		void SetValue(int value);
 		int GetValue();
 		RECT GetPosition();
+		void SetPosition(RECT pos);
+		bool is_hiding = false;
 	private:
 		RECT position;
 		int value;

@@ -68,6 +68,7 @@ Level::~Level()
 void Level::Draw()
 {
     for (Block block : block_list) block.Draw(RED);
+    for (Block* block : new_block) block->Draw(RED);
     for (Slider &slider : slider_list) slider.Draw();
     for (Space &space : space_list) space.Draw(RED);
     player->Draw();
@@ -75,6 +76,7 @@ void Level::Draw()
     {
         game_scene.operation_list[cur_step-1].DrawTriangle();
     }
+    
     // POINT pts[] = { {50, 100}, {200, 200}, {200, 50} };
     // fillpolygon(pts, 3);
 }
@@ -152,62 +154,23 @@ void Level::QuitGame()
     {
         cur_block = (Block*)nullptr;
     }
-    
+    for (int i = 0; i < new_block.size(); ++i)
+    {
+        delete new_block[i];
+    }
+    new_block.clear();
     this->nxt_input = -1;
-    
     std :: cout << "Level::QuitGame()" << std :: endl;
 }
-// int Level::Inbox(int cur_step){
-//     ++nxt_input;
-// //        printf("nxt_input=%d std.size=%d\n",nxt_input,std_input.size());
-//     if (nxt_input>=std_input.size()) return input_size + 1;
-//     cur_block = std_input[nxt_input];
-//     return cur_step + 1;
-// }
-// int Level::Outbox(int cur_step){
-//     if (cur_block==INF) return -1;
-//     user_output.push_back(cur_block);
-//     cur_block = INF;
-//     return cur_step+1;
-// }
-// int Level::Copyfrom(int cur_step,int x){
-//     if (x>available_space || block[x]==INF) return -1;
-//     cur_block = block[x];
-//     return cur_step+1;
-// }
-// int copyto(int cur_step,int x){
-//     if (x>available_space || cur_block==INF) return -1;
-//     block[x] = cur_block;
-//     return cur_step+1;
-// }
-// int add(int cur_step,int x){
-//     if (x>available_space || cur_block==INF || block[x]==INF) return -1;
-//     cur_block += block[x];
-//     return cur_step+1;
-// }
-// int sub(int cur_step,int x){
-//     if (x>available_space || cur_block==INF || block[x]==INF) return -1;
-//     cur_block -= block[x];
-//     return cur_step+1;
-// }
-// int jump(int x){
-//     if (x>n) return -1;
-//     return x;
-// }
-// int jumpifzero(int cur_step,int x){
-//     if (x>n || cur_block==INF) return -1;
-//     return (!cur_block)?x:cur_step+1;
-// }
 int Level::GetNextStep(int cur_step){
     int op = game_scene.operation_list[cur_step-1].GetType();
     int x = game_scene.operation_list[cur_step-1].GetValue();
     std :: cout << "op = " << op << std::endl;
     std :: cout << "useful = " << is_useful << std::endl;
-    
-    
     if (!(is_useful>>(op-1)&1)) return -1;
     if (op == (int)OperationType::Inbox) //inbox 只有结束
     {
+        
         std::cout << "inbox " << x << std::endl;
         ++nxt_input;
         if (nxt_input >= std_input.size()) return input_size + 1;
@@ -215,7 +178,7 @@ int Level::GetNextStep(int cur_step){
     }
     else if (op == (int)OperationType::Outbox) 
     {
-        if (cur_block == nullptr) return -1;
+        if (player->GetBlock() == nullptr) return -1;
         return cur_step+1;
     }
     else if (op == (int)OperationType::CopyFrom)
@@ -225,17 +188,17 @@ int Level::GetNextStep(int cur_step){
     }
     else if (op == (int)OperationType::CopyTo) 
     {
-        if (x>available_space || cur_block == nullptr) return -1;
+        if (x>available_space || player->GetBlock() == nullptr) return -1;
         return cur_step + 1;
     }
     else if (op == (int)OperationType::Add)
     {
-        if (x>available_space || cur_block == nullptr || space_list[x].GetBlock() == nullptr) return -1;
+        if (x>available_space || player->GetBlock() == nullptr || space_list[x].GetBlock() == nullptr) return -1;
         return cur_step + 1;
     }
     else if (op == (int)OperationType::Sub) 
     {
-        if (x>available_space || cur_block == nullptr || space_list[x].GetBlock() == nullptr) return -1;
+        if (x>available_space || player->GetBlock() == nullptr || space_list[x].GetBlock() == nullptr) return -1;
         return cur_step + 1;
     }
     else if (op == (int)OperationType::Jump) 
@@ -245,8 +208,8 @@ int Level::GetNextStep(int cur_step){
     }
     else if (op == (int)OperationType::JumpIfZero) 
     {
-        if (x > game_scene.operation_list.size() || cur_block == nullptr) return -1;
-        if (cur_block->GetValue() == 0) return x;
+        if (x > game_scene.operation_list.size() || player->GetBlock() == nullptr) return -1;
+        if (player->GetBlock()->GetValue() == 0) return x;
         else return cur_step + 1;
     }
     return -1;
@@ -260,66 +223,84 @@ int Level::GetNextStep(int cur_step){
 //     // }
 //     return 1;
 // }
-bool Level::Play(int cur_step){
+void Level::Play(int cur_step){
     int op = game_scene.operation_list[cur_step-1].GetType();
     int x = game_scene.operation_list[cur_step-1].GetValue();
     if (op == (int)OperationType::Inbox) //inbox 只有结束
     {
-        return player->Move(inbox_pos.x, inbox_pos.y);
+        player->SetPosition({inbox_pos.x, inbox_pos.y, inbox_pos.x + player_width, inbox_pos.y + player_height});
         RECT pos = player->GetPosition();
+        if (player->GetBlock() != nullptr)
+        {
+            player->GetBlock()->is_hiding = true;
+        }
+        player->SetBlock(&block_list[nxt_input]);
+        player->GetBlock()->SetPosition({inbox_pos.x, inbox_pos.y - 20, inbox_pos.x + block_width, inbox_pos.y - 20 + block_height});
     }
-    else if (op == (int)OperationType::Outbox) 
+    else if (op == (int)OperationType::Outbox)
     {
-        return player->Move(outbox_pos.x, outbox_pos.y);
+        player->SetPosition({outbox_pos.x, outbox_pos.y, outbox_pos.x + player_width, outbox_pos.y + player_height});
+        RECT pos = player->GetPosition();
+        player->GetBlock()->SetPosition({outbox_pos.x, outbox_pos.y - 20, outbox_pos.x + block_width, outbox_pos.y - 20 + block_height});
+        player->SetBlock(nullptr);
     }
     else if (op == (int)OperationType::CopyFrom)
     {
         RECT pos = space_list[x].GetPosition();
-        return player->Move(pos.left, pos.top);
+        player->SetPosition({pos.left, pos.top - 20, pos.right, pos.bottom - 20});
+        Block* block = new Block(*(player->GetBlock()));
+        new_block.push_back(block);
+        if (space_list[x].GetBlock() != nullptr)
+        {
+            space_list[x].GetBlock()->is_hiding = true;
+        }
+        space_list[x].SetBlock(block);
     }
     else if (op == (int)OperationType::CopyTo) 
     {
         RECT pos = space_list[x].GetPosition();
-        return player->Move(pos.left, pos.top);
+        player->SetPosition({pos.left, pos.top - 20, pos.right, pos.bottom - 20});
+        Block* block = new Block(*(space_list[x].GetBlock()));
+        new_block.push_back(block);
+        if (player->GetBlock() != nullptr)
+        {
+            player->GetBlock()->is_hiding = true;
+        }
+        player->SetBlock(block);
     }
     else if (op == (int)OperationType::Add)
     {
         RECT pos = space_list[x].GetPosition();
-        return player->Move(pos.left, pos.top);
+        player->SetPosition({pos.left, pos.top - 20, pos.right, pos.bottom - 20});
+        player->SetValue(player->GetValue() + space_list[x].GetValue());
     }
     else if (op == (int)OperationType::Sub) 
     {
         RECT pos = space_list[x].GetPosition();
-        return player->Move(pos.left, pos.top);
+        player->SetPosition({pos.left, pos.top - 20, pos.right, pos.bottom - 20});
+        player->SetValue(player->GetValue() - space_list[x].GetValue());
     }
     else if (op == (int)OperationType::Jump) 
     {
-        return 1;
+        ;
     }
     else if (op == (int)OperationType::JumpIfZero) 
     {
-        return 1;
+        ;
     }
-    return 0;
 }
 int Level::Update()
 {
     //player->Move(500, 500);
-    std:: cout << "is_finished is " << is_finished << std::endl;
     int operation_size = game_scene.operation_list.size();
     if (cur_step <= operation_size)
     {
-        if (!is_finished)
-        {
-            is_finished = Play(cur_step);
-        }
-        else
-        {
-            int nxt_step = GetNextStep(cur_step);
-            if (nxt_step == -1) return -1;
-            cur_step = nxt_step;
-            is_finished = false;
-        }
+        int nxt_step = GetNextStep(cur_step);
+        if (nxt_step == -1) return -1;
+        Play(cur_step);
+        cur_step = nxt_step;
+        is_finished = false;
+        return 0;
     }
     return 1;
 }

@@ -21,6 +21,10 @@ void Space::SetValue(int value)
 {
     this->value = value;
 }
+void Space::SetBlock(Block* block)
+{
+    this->block = block;
+}
 int Space::GetValue()
 {
     return this->value;

@@ -17,35 +17,9 @@ void Player::Draw()
     // drawtext(_T((std::to_string(1)).c_str()), &position, DT_CENTER);
     // drawtext(_T(std::to_string(value).c_str()), &position, DT_CENTER);
 }
-bool Player::Move(int x, int y)
+Block* Player::GetBlock()
 {
-    std:: cout<< "Moving to :" << x << ' ' << y << std::endl;
-    int delta_x = x - position.left;
-    int delta_y = y - position.top;
-    double dis = std::sqrt(delta_x * delta_x + delta_y * delta_y);
-    int final_x = x, final_y = y;
-    if (fabs(dis) > eps)
-    {
-        int normalize_x = (int)(delta_x * move_speed / dis);
-        int normalize_y = (int)(delta_y * move_speed / dis);
-        final_x = normalize_x + position.left;
-        final_y = normalize_y + position.top;
-        if (dis < std::sqrt(normalize_x * normalize_x + normalize_y * normalize_y))
-        {
-            final_x = x;
-            final_y = y;
-        }
-        position = {final_x, final_y, final_x + block_width, final_y + block_height};
-    }
-    if (block != nullptr)
-    {
-        RECT pos = block->GetPosition();
-        int delta_block_x = pos.left - final_x;
-        int delta_block_y = pos.top - final_y;
-        block->Move(x + delta_block_x, y + delta_block_y);
-    }
-    
-    return (final_x == x) && (final_y == y);
+    return block;
 }
 void Player::SetValue(int value)
 {
@@ -62,4 +36,8 @@ int Player::GetValue()
 RECT Player::GetPosition()
 {
     return position;
+}
+void Player::SetBlock(Block* block)
+{
+    this->block = block;
 }

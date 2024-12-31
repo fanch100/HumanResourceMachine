@@ -16,11 +16,12 @@ class Player
 		Player(RECT pos);
 		~Player();
 		void Draw();
-		bool Move(int x, int y);
 		void SetValue(int value);
 		void SetPosition(RECT pos);
 		int GetValue();
 		RECT GetPosition();
+		void SetBlock(Block* block);
+		Block* GetBlock();
 	private:
 		RECT position;
 		int value;

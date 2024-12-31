@@ -12,6 +12,7 @@ Block::Block(const Block& block)
 Block::~Block() = default;
 void Block::Draw(int color)
 {
+    if (is_hiding == true) return;
     // setlinecolor(color);
     // setfillcolor(color);
     putimage_alpha(position.left, position.top, &img_block);
@@ -54,4 +55,8 @@ int Block::GetValue()
 RECT Block::GetPosition()
 {
     return this->position;
+}
+void Block::SetPosition(RECT pos)
+{
+    this->position = pos;
 }

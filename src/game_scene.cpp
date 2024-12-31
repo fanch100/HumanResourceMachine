@@ -65,11 +65,8 @@ void GameScene::Draw()
 void GameScene::Update()
 {
     std::cout << "Game Scene Update" << std::endl;
-    if (is_playing)
-    {
-        int update_result = cur_level->Update();
-        if (update_result == -1) std::cout << "Game Over" << std::endl;
-    }
+    int update_result = cur_level->Update();
+    if (update_result == -1) std::cout << "Game Over" << std::endl;
 }
 void GameScene::ProcessMessage(const ExMessage &msg)
 {

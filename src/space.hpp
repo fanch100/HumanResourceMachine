@@ -15,6 +15,7 @@ class Space
 		void SetValue(int value);
 		int GetValue();
 		Block* GetBlock();
+		void SetBlock(Block* block);
 		RECT GetPosition();
 	private:
 		RECT position;
