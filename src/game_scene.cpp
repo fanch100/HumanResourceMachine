@@ -40,7 +40,7 @@ void GameScene::Init()
         POINT cur_operation = {100 + (i-1)*(operation_height+2),1100};//top left
         RECT pos = {cur_operation.y, cur_operation.x, cur_operation.y + operation_width, cur_operation.x + operation_height};
         std ::cout << "type = " << operation_name_to_number[str] << "x = " << x << std::endl;
-        operation_list.push_back(Operation(pos,operation_name_to_number[str],x));
+        operation_list.push_back(Operation(pos, x, operation_name_to_number[str]));
     }
     fin.close();
 

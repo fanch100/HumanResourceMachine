@@ -311,7 +311,7 @@ int Level::Update()
     {
         if (!is_finished)
         {
-            is_finished = !Play(cur_step);
+            is_finished = Play(cur_step);
         }
         else
         {
