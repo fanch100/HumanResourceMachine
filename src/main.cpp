@@ -18,6 +18,9 @@ const int slider_height = 30;
 const int space_width = 50;
 const int space_height = 50;
 
+const int operation_width = 200;
+const int operation_height = 50;
+
 const int move_speed = 10;
 
 const int INF = 0x3f3f3f3f;
@@ -55,7 +58,10 @@ MenuScene menu_scene;
 LevelSelectScene level_select_scene;
 GameScene game_scene;
 
-void init_select_level();
+std::unordered_map<std::string, int> operation_name_to_number;
+std::unordered_map<int, std::string> operation_number_to_name;
+
+
 void load_resources()
 {
 	loadimage(&img_menu_background,_T("images/menu_background.png"), 1280, 720, true);
@@ -74,8 +80,30 @@ void load_resources()
 	loadimage(&img_game_play_btn_hovered, _T("images/game_play_btn_hovered.png"), button_width, button_height, true);
 	loadimage(&img_game_play_btn_pushed, _T("images/game_play_btn_pushed.png"), button_width, button_height, true);
 	init_select_level();
+    init_map();
 }
 
+
+void init_map()
+{
+    operation_name_to_number["inbox"] = 1;
+    operation_name_to_number["outbox"] = 2;
+    operation_name_to_number["copyfrom"] = 3;
+    operation_name_to_number["copyto"] = 4;
+    operation_name_to_number["add"] = 5;
+    operation_name_to_number["sub"] = 6;
+    operation_name_to_number["jump"] = 7;
+    operation_name_to_number["jumpifzero"] = 8;
+
+    operation_number_to_name[1] = "inbox";
+    operation_number_to_name[2] = "outbox";
+    operation_number_to_name[3] = "copyfrom";
+    operation_number_to_name[4] = "copyto";
+    operation_number_to_name[5] = "add";
+    operation_number_to_name[6] = "sub";
+    operation_number_to_name[7] = "jump";
+    operation_number_to_name[8] = "jumpifzero";
+}
 // class Animation
 // {
 // public:
@@ -96,10 +124,10 @@ void load_resources()
 std::vector<LevelSelectButton> level_select_btn_list;
 
 
-// std::vector<Slider*> slider_list;
+// // std::vector<Slider*> slider_list;
 
 
-std::vector<Operation> operation_list;
+// std::vector<Operation> operation_list;
 
 
 std::vector<Level> level_list;
@@ -177,6 +205,8 @@ int main()
 		}
 		// 绘制
         scene_manager.Draw();
+
+
 		if (is_game_quited == true) break;
 		FlushBatchDraw();
 		DWORD end_time = GetTickCount();

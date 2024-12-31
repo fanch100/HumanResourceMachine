@@ -27,14 +27,36 @@ Level::Level(LPCTSTR path)
     fin.close();
     fin.clear();
     fin.seekg(0, std::ios::beg);
+
+    player = new Player(RECT{20, 20, 20 + player_width, 20 + player_height});
 }
-Level::~Level() = default;
+Level& operator= (const Level& level)
+{
+
+    this->input_size = level.input_size;
+}
+
+Level::Level(const Level& level)
+{
+    this->input_size = level.input_size;
+    this->output_size = level.output_size;
+    this->available_space = level.available_space;
+    this->
+}
+Level::~Level()
+{
+    if (player != nullptr)
+    {
+        delete player;
+        player = nullptr;
+    }
+}
 void Level::Draw()
 {
     for (Block block : block_list) block.Draw(RED);
     for (Slider &slider : slider_list) slider.Draw();
     for (Space &space : space_list) space.Draw(RED);
-    
+    player->Draw();
 }
 void Level::ProcessMessage(const ExMessage &msg)
 {
@@ -44,7 +66,6 @@ void Level::ProcessMessage(const ExMessage &msg)
 void Level::InitGame()
 {
     //箱子初始化
-    
     std:: cout << "game_id is "  << level_value << std::endl;
     int cur_block_top = 350, cur_block_left = 20;
     for (int i : std_input)
@@ -143,16 +164,43 @@ void Level::QuitGame()
 	// 		if (x>n || cur_block==INF) return -1;
 	// 		return (!cur_block)?x:cur_step+1;
 	// 	}
-	// 	int getnxt(int cur_step){
-	// 		int op=a[cur_step].op, x=a[cur_step].x;
-	// 		if (!is_useful[op]) return -1;
-	// 		if (op==1) return inbox(cur_step);
-	// 		else if (op==2) return outbox(cur_step);
-	// 		else if (op==3) return copyfrom(cur_step,x);
-	// 		else if (op==4) return copyto(cur_step,x);
-	// 		else if (op==5) return add(cur_step,x);
-	// 		else if (op==6) return sub(cur_step,x);
-	// 		else if (op==7) return jump(x);
-	// 		else if (op==8) return jumpifzero(cur_step,x);
-	// 		return -1;
-	// 	}
+int GetNextStep(int cur_step){
+    // int op=a[cur_step].op, x=a[cur_step].x;
+    // if (!is_useful[op]) return -1;
+    // if (op==1) return inbox(cur_step);
+    // else if (op==2) return outbox(cur_step);
+    // else if (op==3) return copyfrom(cur_step,x);
+    // else if (op==4) return copyto(cur_step,x);
+    // else if (op==5) return add(cur_step,x);
+    // else if (op==6) return sub(cur_step,x);
+    // else if (op==7) return jump(x);
+    // else if (op==8) return jumpifzero(cur_step,x);
+    return -1;
+}
+bool chk(){
+    // if (user_output.size()!=std_output.size()) return 0;
+    // else {
+    //     for (int i=0;i<user_output.size();++i){
+    //         if (user_output[i]!=std_output[i]) return 0;
+    //     }
+    // }
+    return 1;
+}
+void Play(){
+    int cur_step = 1;
+    int operation_size = game_scene.operation_list.size(); 
+    while(cur_step <= operation_size){
+//            printf("cur_step=%d\n",cur_step);
+        int nxt_step=GetNextStep(cur_step);
+//            printf("nxt_step=%d\n",nxt_step);
+        if (nxt_step==-1){
+            printf("Error on instruction %d\n",cur_step);
+            return;
+        }
+        cur_step=nxt_step;
+    }
+//        for (int i=0;i<std_output.size();++i) printf("i=%d out=%d\n",i,std_output[i]);
+//        for (int i=0;i<user_output.size();++i) printf("i=%d out=%d\n",i,user_output[i]);
+    if (chk()) puts("Success");
+    else puts("Fail");
+}

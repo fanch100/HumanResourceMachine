@@ -13,14 +13,14 @@ extern const int player_height;
 class Player
 {
 	public:
-		Player(RECT pos, int color, LPCTSTR path_player, int value);
+		Player(RECT pos);
 		~Player();
-		void Draw(int color);
+		void Draw();
 		void Move(int x, int y);
 		void SetValue(int value);
+		void SetPosition(RECT pos);
 		int GetValue();
 	private:
 		RECT position;
 		int value;
-		IMAGE img;
 };

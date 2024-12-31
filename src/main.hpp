@@ -9,6 +9,7 @@
 #include "player.hpp"
 #include "space.hpp"
 #include "text_box.hpp"
+#include "operation.hpp"
 
 #include "button.hpp"
 #include "start_button.hpp"
@@ -29,6 +30,7 @@
 
 void init_select_level();
 void load_resources();
+void init_map();
 // class Animation
 // {
 // public:
@@ -109,11 +111,7 @@ void load_resources();
 
 void init_select_level();
 
-struct Operation
-{
-	int type, value;
-    RECT position;
-};
+
 struct Point
 {
 	int x, y;

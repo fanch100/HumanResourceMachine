@@ -11,6 +11,13 @@ extern IMAGE block;
 extern GameQuitButton game_btn_quit;
 extern GamePlayButton game_play_btn;
 extern GameFileInputButton game_file_input_btn;
+extern std::ifstream fin;
+extern const int INF;
+extern std::unordered_map<std::string, int> operation_name_to_number;
+extern std::unordered_map<int, std::string> operation_number_to_name;
+
+extern const int operation_width;
+extern const int operation_height;
 
 class GameScene : public Scene
 {

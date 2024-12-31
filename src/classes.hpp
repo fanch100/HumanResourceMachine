@@ -6,6 +6,8 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <algorithm>
+#include <unordered_map>
 #include <math.h>
 
 class Button;
@@ -29,6 +31,7 @@ class Level;
 class TextBox;
 class Player;
 class Space;
+class Operation;
 
 enum class GameStage {
     Menu = 0,
@@ -36,6 +39,5 @@ enum class GameStage {
     Game
 };
 
-struct Operation;
 struct Point;
 

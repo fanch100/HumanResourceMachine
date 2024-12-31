@@ -114,6 +114,7 @@
                 "./src/text_box.cpp",
                 "./src/player.cpp",
                 "./src/space.cpp",
+                "./src/operation.cpp",
 
                 "-leasyx",
                 "-lgdi32",

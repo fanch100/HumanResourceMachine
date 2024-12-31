@@ -1,23 +1,21 @@
 #include "main.hpp"
 
 
-Player::Player(RECT pos, int color, LPCTSTR path_player, int value)
+Player::Player(RECT pos)
 {
     position = pos;
-    this->value = value;
-    loadimage(&img, path_player);
 }
 Player::~Player() = default;
-void Player::Draw(int color)
+void Player::Draw()
 {
     // setlinecolor(color);
     // setfillcolor(color);
     putimage_alpha(position.left, position.top, &img_player);
-    settextcolor(color);//设置字体颜色
-    settextstyle(20, 0, _T("monospace"));//设置字体
+    // settextcolor(color);//设置字体颜色
+    // settextstyle(20, 0, _T("monospace"));//设置字体
     //outtextxy(position.left+10, position.top+40, str);//输出文字
     // drawtext(_T((std::to_string(1)).c_str()), &position, DT_CENTER);
-    drawtext(_T(std::to_string(value).c_str()), &position, DT_CENTER);
+    // drawtext(_T(std::to_string(value).c_str()), &position, DT_CENTER);
 }
 void Player::Move(int x, int y)
 {
@@ -34,6 +32,10 @@ void Player::Move(int x, int y)
 void Player::SetValue(int value)
 {
     this->value = value;
+}
+void Player::SetPosition(RECT pos)
+{
+    this->position = pos;
 }
 int Player::GetValue()
 {
