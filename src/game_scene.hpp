@@ -31,7 +31,7 @@ class GameScene : public Scene
         void ProcessMessage(const ExMessage &msg);
         void Quit();
         std::vector<Operation> operation_list;
-        int game_type;
+        int update_result = 0;
     private:
         TextBox* input_box = nullptr;
 };

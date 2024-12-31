@@ -246,18 +246,7 @@ void Level::Play(int cur_step){
     {
         RECT pos = space_list[x].GetPosition();
         player->SetPosition({pos.left, pos.top - 20, pos.right, pos.bottom - 20});
-        Block* block = new Block(*(player->GetBlock()));
-        new_block.push_back(block);
-        if (space_list[x].GetBlock() != nullptr)
-        {
-            space_list[x].GetBlock()->is_hiding = true;
-        }
-        space_list[x].SetBlock(block);
-    }
-    else if (op == (int)OperationType::CopyTo) 
-    {
-        RECT pos = space_list[x].GetPosition();
-        player->SetPosition({pos.left, pos.top - 20, pos.right, pos.bottom - 20});
+        
         Block* block = new Block(*(space_list[x].GetBlock()));
         new_block.push_back(block);
         if (player->GetBlock() != nullptr)
@@ -265,6 +254,19 @@ void Level::Play(int cur_step){
             player->GetBlock()->is_hiding = true;
         }
         player->SetBlock(block);
+    }
+    else if (op == (int)OperationType::CopyTo) 
+    {
+        std::cout << "CopyTo" << std::endl;
+        RECT pos = space_list[x].GetPosition();
+        player->SetPosition({pos.left, pos.top - 20, pos.right, pos.bottom - 20});
+        Block* block = new Block(*(player->GetBlock()));
+        new_block.push_back(block);
+        if (space_list[x].GetBlock() != nullptr)
+        {
+            space_list[x].GetBlock()->is_hiding = true;
+        }
+        space_list[x].SetBlock(block);
     }
     else if (op == (int)OperationType::Add)
     {
@@ -301,11 +303,13 @@ int Level::Update()
 {
     //player->Move(500, 500);
     int operation_size = game_scene.operation_list.size();
+    std :: cout << "cur_step: " << cur_step << "siz: " << operation_size << std :: endl;
     if (cur_step <= operation_size)
     {
         int nxt_step = GetNextStep(cur_step);
         if (nxt_step == -1) return cur_step;
         Play(cur_step);
+        std :: cout << "nxt_step: " << nxt_step << std :: endl;
         cur_step = nxt_step;
         is_finished = false;
         return 0;

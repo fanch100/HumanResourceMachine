@@ -12,6 +12,7 @@ class Block
 {
 	public:
 		Block(RECT pos, int color, int value);
+		Block& operator= (const Block& block);
         Block(const Block& block);
 		~Block();
 		void Draw(int color);

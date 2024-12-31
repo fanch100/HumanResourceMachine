@@ -12,7 +12,7 @@ void GameScene::Init()
     
     std:: cout << "Ready to input operations" << std::endl;
 
-    fin.open("texts/input.txt");//之后改成path
+    fin.open("texts/input2.txt");//之后改成path
     if (!fin.is_open()) std::cerr << "File not found!" << std::endl;
     if (fin.eof()) std::cerr << "File reach the End!" << std::endl;
     std:: cout << "Ready to input operations" << std::endl;
@@ -50,8 +50,8 @@ void GameScene::Draw()
 {
     putimage_alpha(0, 0, &img_game_background);
     cur_level->Draw();
-    
-    if (game_type == 0)
+    std :: cout << "update_result = " << update_result << std::endl;
+    if (update_result == 0)
     {
         if (input_box != nullptr)
         {
@@ -69,15 +69,15 @@ void GameScene::Draw()
         settextstyle(20, 0, _T("monospace"));//设置字体
         RECT pos = {100, 100, 600, 400};
         std::string str;
-        if (game_type > 0)
+        if (update_result > 0)
         {
-            str = "Error on Instruction " + std::to_string(game_type);
+            str = "Error on Instruction " + std::to_string(update_result);
         }
-        else if (game_type == -1)
+        else if (update_result == -1)
         {
             str = "You Win!";
         }
-        else if (game_type == -2)
+        else if (update_result == -2)
         {
             str = "You Failed!";
         }
@@ -89,7 +89,7 @@ void GameScene::Draw()
 void GameScene::Update()
 {
     std::cout << "Game Scene Update" << std::endl;
-    int update_result = cur_level->Update();
+    update_result = cur_level->Update();
     if (update_result > 0) 
     {
         std::cout << "Game Over" << std::endl;
@@ -119,7 +119,7 @@ void GameScene::ProcessMessage(const ExMessage &msg)
     // }
     
     cur_level->ProcessMessage(msg);
-    if (game_type == 0)
+    if (update_result == 0)
     {
         if (input_box != nullptr)
         {
