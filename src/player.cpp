@@ -17,17 +17,26 @@ void Player::Draw()
     // drawtext(_T((std::to_string(1)).c_str()), &position, DT_CENTER);
     // drawtext(_T(std::to_string(value).c_str()), &position, DT_CENTER);
 }
-void Player::Move(int x, int y)
+bool Player::Move(int x, int y)
 {
     int delta_x = x - position.left;
     int delta_y = y - position.top;
     double dis = std::sqrt(delta_x * delta_x + delta_y * delta_y);
+    int final_x = x, final_y = y;
     if (fabs(dis) > eps)
     {
-        int final_x = (int)(delta_x * move_speed / dis) + position.left;
-        int final_y = (int)(delta_y * move_speed / dis) + position.top;
+        int normalize_x = (int)(delta_x * move_speed / dis);
+        int normalize_y = (int)(delta_y * move_speed / dis);
+        final_x = normalize_x + position.left;
+        final_y = normalize_y + position.top;
+        if (dis < std::sqrt(normalize_x * normalize_x + normalize_y * normalize_y))
+        {
+            final_x = x;
+            final_y = y;
+        }
         position = {final_x, final_y, final_x + block_width, final_y + block_height};
     }
+    return (final_x==x) && (final_y == y);
 }
 void Player::SetValue(int value)
 {

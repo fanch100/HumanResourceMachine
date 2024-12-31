@@ -16,11 +16,12 @@ class Level
 {
 	public:
 		Level(LPCTSTR path);
-		Level& operator= (const Level& level);
-		Level(const Level& level);
+		// Level& operator= (const Level& level);
+		// Level(const Level& level);
 		~Level();
 		void Draw();
 		void ProcessMessage(const ExMessage &msg);
+		void Update();
 		void InitGame();
 		void QuitGame();
         void Play();
@@ -86,11 +87,11 @@ class Level
 		std::vector<Block> block_list;
 		std::vector<Slider> slider_list;
 		std::vector<int> user_output;
-		std::vector<Space> space_list; 
+		std::vector<Space> space_list;
         std::vector<Block*> new_block;
         Player* player = (Player*)nullptr;
 		Block* cur_block = (Block*)nullptr;
-    	int nxt_input=-1;
+    	int nxt_input = -1;
+		//int cur_step = 1;
         int GetNextStep(int cur_step);
-        
 };

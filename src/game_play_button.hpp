@@ -7,6 +7,7 @@
 // #include "level.hpp"
 
 extern SceneManager scene_manager;
+extern GameScene game_scene;
 
 class GamePlayButton : public Button
 {

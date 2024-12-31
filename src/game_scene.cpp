@@ -5,6 +5,7 @@ GameScene::~GameScene() = default;
 void GameScene::Init()
 {
     cur_level->InitGame();
+
     int cur_text_box_top = 400, cur_text_box_left = 900;
     input_box = new TextBox();
     input_box->Init(RECT{ cur_text_box_left, cur_text_box_top, cur_text_box_left + 100, cur_text_box_top + 100}, 100);
@@ -58,6 +59,10 @@ void GameScene::Draw()
 void GameScene::Update()
 {
     std::cout << "Game Scene Update" << std::endl;
+    if (is_playing)
+    {
+        cur_level->Update();
+    }
 }
 void GameScene::ProcessMessage(const ExMessage &msg)
 {

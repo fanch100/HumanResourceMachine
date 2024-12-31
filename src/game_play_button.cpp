@@ -10,4 +10,5 @@ GamePlayButton::~GamePlayButton() = default;
 void GamePlayButton::OnClick()
 {
     std:: cout << "GamePlayButton::OnClick()" << std::endl;
+    game_scene.is_playing = true;
 }

@@ -16,7 +16,7 @@ class Player
 		Player(RECT pos);
 		~Player();
 		void Draw();
-		void Move(int x, int y);
+		bool Move(int x, int y);
 		void SetValue(int value);
 		void SetPosition(RECT pos);
 		int GetValue();

@@ -28,21 +28,35 @@ Level::Level(LPCTSTR path)
     fin.clear();
     fin.seekg(0, std::ios::beg);
 
-    player = new Player(RECT{20, 20, 20 + player_width, 20 + player_height});
+    // player = new Player(RECT{20, 20, 20 + player_width, 20 + player_height});
 }
-Level& operator= (const Level& level)
-{
+// Level& Level::operator= (const Level& level)
+// {
+//     this->input_size = level.input_size;
+//     this->output_size = level.output_size;
+//     this->is_useful = level.is_useful;
+//     this->std_input = level.std_input;
+//     this->std_output = level.std_output;
+//     this->available_space = level.available_space;
+//     if (level.player != nullptr)
+//     {
+//         this->player = new Player(*level.player);
+//     }
+//     else this->player = nullptr;
+//     this->cur_block = level.cur_block;
+//     this->block_list = level.block_list;
+//     this->slider_list = level.slider_list;
+//     this->user_output = level.user_output;
+//     this->space_list = level.space_list;
+//     this->nxt_input = level.nxt_input;
+//     this->is_playing = level.is_playing
+//     return *this;
+// }
 
-    this->input_size = level.input_size;
-}
-
-Level::Level(const Level& level)
-{
-    this->input_size = level.input_size;
-    this->output_size = level.output_size;
-    this->available_space = level.available_space;
-    this->
-}
+// Level::Level(const Level& level)
+// {
+//     *this = level;
+// }
 Level::~Level()
 {
     if (player != nullptr)
@@ -62,6 +76,11 @@ void Level::ProcessMessage(const ExMessage &msg)
 {
     for (Slider &slider : slider_list) slider.ProcessMessage(msg);
     //for (Space &space : space_list) space.ProcessMessage(msg);//没有写
+}
+void Level::Update()
+{
+    bool is_finish = player->Move(500, 500);
+    std:: cout << "is_finish is " << is_finish << std::endl;
 }
 void Level::InitGame()
 {
@@ -110,7 +129,8 @@ void Level::InitGame()
     }
     //文本框初始化
     
-    
+    //Player初始化
+    player = new Player(RECT{20, 20, 20 + player_width, 20 + player_height});
 }
 void Level::QuitGame()
 {
@@ -118,7 +138,16 @@ void Level::QuitGame()
     this->slider_list.clear();
     this->user_output.clear();
     // free_space.clear();
-    // cur_block = *(Block*)nullptr;
+    if (player != nullptr)
+    {
+        delete player;
+        player = nullptr;
+    }
+    if (cur_block != nullptr)
+    {
+        cur_block = (Block*)nullptr;
+    }
+    
     this->nxt_input = -1;
     
     std :: cout << "Level::QuitGame()" << std :: endl;
@@ -203,4 +232,8 @@ void Play(){
 //        for (int i=0;i<user_output.size();++i) printf("i=%d out=%d\n",i,user_output[i]);
     if (chk()) puts("Success");
     else puts("Fail");
+}
+void Update()
+{
+    
 }

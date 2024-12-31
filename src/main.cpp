@@ -9,8 +9,8 @@ const int window_height = 720;
 const int block_width = 40;
 const int block_height = 40;
 
-const int player_width = 40;
-const int player_height = 40;
+const int player_width = 60;
+const int player_height = 60;
 
 const int slider_width = 60;
 const int slider_height = 30;
@@ -21,7 +21,7 @@ const int space_height = 50;
 const int operation_width = 200;
 const int operation_height = 50;
 
-const int move_speed = 10;
+const int move_speed = 5;
 
 const int INF = 0x3f3f3f3f;
 const double eps = 1e-6;
