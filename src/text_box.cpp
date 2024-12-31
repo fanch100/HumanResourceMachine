@@ -53,7 +53,8 @@ void TextBox::Draw()
     std:: cout << "bottom = " << position.bottom << std::endl;
     setlinecolor(LIGHTGRAY); 
     setbkcolor(0xeeeeee);       
-    setfillcolor(0xeeeeee);             
+    setfillcolor(0xeeeeee);      
+    settextstyle(20, 0, _T("monospace"));//设置字体       
     fillrectangle(position.left, position.top, position.right, position.bottom);
     outtextxy(position.left + 10, position.top + 5, text);
 }
@@ -61,11 +62,12 @@ void TextBox::Draw()
 void TextBox::ProcessMessage(const ExMessage &msg)
 {
     // std :: cout << "TextBox::ProcessMessage" << std::endl;
-    setlinecolor(BLACK);          
-    setbkcolor(WHITE);              
-    setfillcolor(WHITE);                
-    fillrectangle(position.left, position.top, position.right, position.bottom);
-    outtextxy(position.left + 10, position.top + 5, text);
+    // setlinecolor(BLACK);          
+    // setbkcolor(WHITE);              
+    // setfillcolor(WHITE);           
+    // fillrectangle(position.left, position.top, position.right, position.bottom);
+    // settextstyle(20, 0, _T("monospace"));//设置字体
+    // outtextxy(position.left + 10, position.top + 5, text);
 
     int width = textwidth(text);    // 字符串总宽度
     if (msg.message == WM_LBUTTONDOWN)
@@ -83,7 +85,7 @@ void TextBox::ProcessMessage(const ExMessage &msg)
             {
                 text[len - 1] = 0;
                 width = textwidth(text);
-                clearrectangle(position.left + 10 + width, position.top + 1, position.right - 1, position.bottom - 1);
+                // clearrectangle(position.left + 10 + width, position.top + 1, position.right - 1, position.bottom - 1);
             }
             break;
         case '\r':                // 用户按回车键，结束文本输入
@@ -97,9 +99,9 @@ void TextBox::ProcessMessage(const ExMessage &msg)
                 text[len++] = msg.ch;
                 text[len] = 0;
 
-                clearrectangle(position.left + 10 + width + 1, position.top + 3, position.left + 10 + width + 1, position.bottom - 3);    // 清除画的光标
-                width = textwidth(text);                // 重新计算文本框宽度
-                outtextxy(position.left + 10, position.top + 5, text);        // 输出新的字符串
+                // clearrectangle(position.left + 10 + width + 1, position.top + 3, position.left + 10 + width + 1, position.bottom - 3);    // 清除画的光标
+                // width = textwidth(text);                // 重新计算文本框宽度
+                // outtextxy(position.left + 10, position.top + 5, text);        // 输出新的字符串
             }
         }
     }

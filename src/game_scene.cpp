@@ -13,12 +13,14 @@ void GameScene::Init()
 void GameScene::Draw()
 {
     putimage_alpha(0, 0, &img_game_background);
-    game_btn_quit.Draw(_T("Quit"));
     cur_level->Draw();
     if (input_box != nullptr)
     {
         input_box->Draw();
     }
+    game_play_btn.Draw(_T("Play"));
+    game_file_input_btn.Draw(_T("Input File"));
+    game_btn_quit.Draw(_T("Quit"));
     std::cout << "Game Scene Draw" << std::endl;
 }
 void GameScene::Update()
@@ -48,6 +50,8 @@ void GameScene::ProcessMessage(const ExMessage &msg)
     {
         input_box->ProcessMessage(msg);
     }
+    game_play_btn.ProcessMessage(msg);
+    game_file_input_btn.ProcessMessage(msg);
     game_btn_quit.ProcessMessage(msg);//quit最好设置在下面
     std::cout << "Game Scene ProcessMessage" << std::endl;
 }

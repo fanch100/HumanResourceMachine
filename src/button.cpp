@@ -14,13 +14,13 @@ void Button::Draw(LPCTSTR str)
     switch (stage)
     {
         case Stage::Default:
-            putimage(position.left, position.top, &img_btn_default);
+            putimage_alpha(position.left, position.top, &btn_default);
             break;
         case Stage::Hovered:
-            putimage(position.left, position.top, &img_btn_hovered);
+            putimage_alpha(position.left, position.top, &btn_hovered);
             break;
         case Stage::Pushed:
-            putimage(position.left, position.top, &img_btn_pushed);
+            putimage_alpha(position.left, position.top, &btn_pushed);
             break;
     }
 

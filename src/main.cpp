@@ -46,6 +46,10 @@ IMAGE img_btn_default;
 IMAGE img_btn_hovered;
 IMAGE img_btn_pushed;
 
+IMAGE img_game_play_btn_default;
+IMAGE img_game_play_btn_hovered;
+IMAGE img_game_play_btn_pushed;
+
 SceneManager scene_manager;
 MenuScene menu_scene;
 LevelSelectScene level_select_scene;
@@ -62,10 +66,13 @@ void load_resources()
 	loadimage(&img_player, _T("images/player.png"), player_width, player_height, true);
 	loadimage(&img_space, _T("images/space.png"), space_width, space_height, true);
 
-
 	loadimage(&img_btn_default, _T("images/btn_default.png"), button_width, button_height, true);
 	loadimage(&img_btn_hovered, _T("images/btn_hovered.png"), button_width, button_height, true);
 	loadimage(&img_btn_pushed, _T("images/btn_pushed.png"), button_width, button_height, true);
+
+    loadimage(&img_game_play_btn_default, _T("images/game_play_btn_default.png"), button_width, button_height, true);
+	loadimage(&img_game_play_btn_hovered, _T("images/game_play_btn_hovered.png"), button_width, button_height, true);
+	loadimage(&img_game_play_btn_pushed, _T("images/game_play_btn_pushed.png"), button_width, button_height, true);
 	init_select_level();
 }
 
@@ -86,20 +93,12 @@ void load_resources()
 // private:
 // }
 
-struct Point
-{
-	int x, y;
-};
 std::vector<LevelSelectButton> level_select_btn_list;
 
 
 // std::vector<Slider*> slider_list;
 
-struct Operation
-{
-	int type, value;
-    RECT position;
-};
+
 std::vector<Operation> operation_list;
 
 
@@ -119,10 +118,12 @@ void init_select_level()
 		level_select_btn_list.push_back(LevelSelectButton({(window_width-button_width)/2+ i*200 - mid*200, window_height/2+100, (window_width-button_width)/2+ i*200 - mid*200 + button_width, window_height/2+100+button_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"), i));
 	}
 }
-StartButton menu_btn_start = StartButton({window_width/2-200, window_height/2+100, window_width/2-200+button_width, window_height/2+100+button_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"));
-MenuQuitButton menu_btn_quit = MenuQuitButton({window_width-button_width, window_height-button_height, window_width, window_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"));
+StartButton menu_btn_start = StartButton({(window_width-button_width)/2-200, window_height/2+100, (window_width-button_width)/2-200+button_width, window_height/2+100+button_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"));
+MenuQuitButton menu_btn_quit = MenuQuitButton({(window_width-button_width)/2+200, window_height/2+100, (window_width-button_width)/2+200+button_width, window_height/2+100+button_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"));
 LevelSelectQuitButton level_select_btn_quit = LevelSelectQuitButton({window_width-button_width, window_height-button_height, window_width, window_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"));
 GameQuitButton game_btn_quit = GameQuitButton({window_width-button_width, window_height-button_height, window_width, window_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"));
+GamePlayButton game_play_btn = GamePlayButton({900, 600, 900 + button_width, 600 + button_height}, _T("images/game_play_btn_default.png"), _T("images/game_play_btn_hovered.png"), _T("images/game_play_btn_pushed.png"));
+GameFileInputButton game_file_input_btn = GameFileInputButton({1000, 600, 1000 + button_width, 600 + button_height}, _T("images/game_play_btn_default.png"), _T("images/game_play_btn_hovered.png"), _T("images/game_play_btn_pushed.png"));
 
 int main()
 {

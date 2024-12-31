@@ -16,6 +16,8 @@
 #include "menu_quit_button.hpp"
 #include "level_select_quit_button.hpp"
 #include "game_quit_button.hpp"
+#include "game_file_input_button.hpp"
+#include "game_play_button.hpp"
 
 #include "scene.hpp"
 #include "scene_manager.hpp"
@@ -107,4 +109,12 @@ void load_resources();
 
 void init_select_level();
 
-
+struct Operation
+{
+	int type, value;
+    RECT position;
+};
+struct Point
+{
+	int x, y;
+};

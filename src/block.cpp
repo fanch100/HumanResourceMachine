@@ -4,6 +4,11 @@ Block::Block(RECT pos, int color, int value)
     position = pos;
     this->value = value;
 }
+Block::Block(const Block& block)
+{
+    position = block.position;
+    value = block.value;
+}
 Block::~Block() = default;
 void Block::Draw(int color)
 {

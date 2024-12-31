@@ -46,7 +46,7 @@ void Level::InitGame()
     //箱子初始化
     
     std:: cout << "game_id is "  << level_value << std::endl;
-    int cur_block_top = 400, cur_block_left = 20;
+    int cur_block_top = 350, cur_block_left = 20;
     for (int i : std_input)
     {
         RECT pos = {cur_block_left, cur_block_top, cur_block_left + block_width, cur_block_top + block_height};

@@ -9,6 +9,8 @@ extern IMAGE img_game_background;
 extern IMAGE block;
 
 extern GameQuitButton game_btn_quit;
+extern GamePlayButton game_play_btn;
+extern GameFileInputButton game_file_input_btn;
 
 class GameScene : public Scene
 {
@@ -20,6 +22,7 @@ class GameScene : public Scene
         void Update();
         void ProcessMessage(const ExMessage &msg);
         void Quit();
+        std::vector<Operation> operation_list;
     private:
         TextBox* input_box = nullptr;
 };

@@ -12,6 +12,7 @@ class Block
 {
 	public:
 		Block(RECT pos, int color, int value);
+        Block(const Block& block);
 		~Block();
 		void Draw(int color);
 		void Move(int x, int y);

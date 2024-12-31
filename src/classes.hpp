@@ -14,6 +14,8 @@ class LevelSelectButton;
 class MenuQuitButton;
 class LevelSelectQuitButton;
 class GameQuitButton;
+class GamePlayButton;
+class GameFileInputButton;
 
 class Scene;
 class SceneManager;
@@ -33,4 +35,7 @@ enum class GameStage {
     LevelSelect,
     Game
 };
+
+struct Operation;
+struct Point;
 
