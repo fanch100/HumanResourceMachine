@@ -28,6 +28,7 @@ class Level
 		void InitGame();
 		void QuitGame();
         void Play(int cur_step);
+		bool Check();
 	private:
 		enum class OperationType
 		{

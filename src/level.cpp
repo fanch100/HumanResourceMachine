@@ -72,10 +72,7 @@ void Level::Draw()
     for (Slider &slider : slider_list) slider.Draw();
     for (Space &space : space_list) space.Draw(RED);
     player->Draw();
-    if (game_scene.is_playing)
-    {
-        game_scene.operation_list[cur_step-1].DrawTriangle();
-    }
+    game_scene.operation_list[cur_step-1].DrawTriangle();
     
     // POINT pts[] = { {50, 100}, {200, 200}, {200, 50} };
     // fillpolygon(pts, 3);
@@ -242,6 +239,7 @@ void Level::Play(int cur_step){
         player->SetPosition({outbox_pos.x, outbox_pos.y, outbox_pos.x + player_width, outbox_pos.y + player_height});
         RECT pos = player->GetPosition();
         player->GetBlock()->SetPosition({outbox_pos.x, outbox_pos.y - 20, outbox_pos.x + block_width, outbox_pos.y - 20 + block_height});
+        user_output.push_back(player->GetBlock()->GetValue());
         player->SetBlock(nullptr);
     }
     else if (op == (int)OperationType::CopyFrom)
@@ -289,6 +287,16 @@ void Level::Play(int cur_step){
         ;
     }
 }
+bool Level::Check()
+{
+    if (user_output.size()!=std_output.size()) return 0;
+    else {
+        for (int i=0; i<user_output.size(); ++i){
+            if (user_output[i] != std_output[i]) return 0;
+        }
+    }
+    return 1;
+}
 int Level::Update()
 {
     //player->Move(500, 500);
@@ -296,11 +304,12 @@ int Level::Update()
     if (cur_step <= operation_size)
     {
         int nxt_step = GetNextStep(cur_step);
-        if (nxt_step == -1) return -1;
+        if (nxt_step == -1) return cur_step;
         Play(cur_step);
         cur_step = nxt_step;
         is_finished = false;
         return 0;
     }
-    return 1;
+    if (Check()) return -1;
+    else return -2;
 }

@@ -50,15 +50,39 @@ void GameScene::Draw()
 {
     putimage_alpha(0, 0, &img_game_background);
     cur_level->Draw();
-    if (input_box != nullptr)
+    
+    if (game_type == 0)
     {
-        input_box->Draw();
+        if (input_box != nullptr)
+        {
+            input_box->Draw();
+        }
+        std :: cout << "Operation List Size = " << operation_list.size() << std :: endl;
+        for (Operation &operation : operation_list) operation.Draw(RED);
+        game_play_btn.Draw(_T("Play"));
+        game_stop_btn.Draw(_T("Stop"));
+        game_file_input_btn.Draw(_T("Input File"));
     }
-    std :: cout << "Operation List Size = " << operation_list.size() << std :: endl;
-    for (Operation &operation : operation_list) operation.Draw(RED);
-    game_play_btn.Draw(_T("Play"));
-    game_stop_btn.Draw(_T("Stop"));
-    game_file_input_btn.Draw(_T("Input File"));
+    else
+    {
+        settextcolor(RED);//设置字体颜色
+        settextstyle(20, 0, _T("monospace"));//设置字体
+        RECT pos = {100, 100, 600, 400};
+        std::string str;
+        if (game_type > 0)
+        {
+            str = "Error on Instruction " + std::to_string(game_type);
+        }
+        else if (game_type == -1)
+        {
+            str = "You Win!";
+        }
+        else if (game_type == -2)
+        {
+            str = "You Failed!";
+        }
+        drawtext(_T(str.c_str()), &pos, DT_CENTER);
+    }
     game_btn_quit.Draw(_T("Quit"));
     std::cout << "Game Scene Draw" << std::endl;
 }
@@ -66,7 +90,15 @@ void GameScene::Update()
 {
     std::cout << "Game Scene Update" << std::endl;
     int update_result = cur_level->Update();
-    if (update_result == -1) std::cout << "Game Over" << std::endl;
+    if (update_result > 0) 
+    {
+        std::cout << "Game Over" << std::endl;
+    }
+    else if (update_result == -1) 
+    {
+        std::cout << "Game Win" << std::endl;
+    }
+    else if (update_result == -2) std::cout << "Game Failed" << std::endl; 
 }
 void GameScene::ProcessMessage(const ExMessage &msg)
 {
@@ -87,12 +119,15 @@ void GameScene::ProcessMessage(const ExMessage &msg)
     // }
     
     cur_level->ProcessMessage(msg);
-    if (input_box != nullptr)
+    if (game_type == 0)
     {
-        input_box->ProcessMessage(msg);
+        if (input_box != nullptr)
+        {
+            input_box->ProcessMessage(msg);
+        }
+        game_play_btn.ProcessMessage(msg);
+        game_file_input_btn.ProcessMessage(msg);
     }
-    game_play_btn.ProcessMessage(msg);
-    game_file_input_btn.ProcessMessage(msg);
     game_btn_quit.ProcessMessage(msg);//quit最好设置在下面
     std::cout << "Game Scene ProcessMessage" << std::endl;
 }
