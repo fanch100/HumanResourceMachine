@@ -1,13 +1,13 @@
 #include "main.hpp"
 
 
-Slider::Slider(RECT pos, LPCTSTR str)
+Slider::Slider(RECT pos, int type)
 {
     position = pos;
     cur_x = pos.left;
     cur_y = pos.top;
     stage = Stage::Default;
-    this->str = str;
+    this->type = type;
 }
 Slider::~Slider() = default;
 void Slider::Draw()
@@ -18,44 +18,12 @@ void Slider::Draw()
     solidrectangle(position.left, position.top, position.right, position.bottom);
     settextstyle(20, 0, _T("monospace"));//设置字体
     //outtextxy(position.left+10, position.top+40, str);//输出文字
-    drawtext(this->str, &position, DT_CENTER);
+    std::string str = operation_number_to_name[this->type];
+    std:: cout << "Slider_str:" << str << std::endl;
+    drawtext(_T(str.c_str()), &position, DT_CENTER);
 }
 void Slider::ProcessMessage(const ExMessage &msg)
 {
-    // switch (msg.message)
-    // {
-    // 	case WM_MOUSEMOVE:
-    // 		if (stage == Stage::Default && CheckCursorInSlider(msg.x, msg.y))
-    // 			stage = Stage::Hovered;
-    // 		else if (stage == Stage::Hovered && !CheckCursorInSlider(msg.x, msg.y))
-    // 			stage = Stage::Pushed;
-    // 		// else if (stage == Stage::Default)
-    // 		// {
-    // 		// 	int delta_x = msg.x - cur_x;
-    // 		// 	int delta_y = msg.y - cur_y;
-    // 		// 	position = {position.left + delta_x, position.top + delta_y, position.right + delta_x, position.bottom + delta_y};
-    // 		// 	std::cout << "msg:x: " << msg.x << " y: " << msg.y << std::endl;
-    // 		// 	std::cout << "cur:x: " << cur_x << " y: " << cur_y << std::endl;
-    // 		// 	std::cout << "delta:x: " << delta_x << " y: " << delta_y << std::endl;
-    // 		// 	cur_x = msg.x;
-    // 		// 	cur_y = msg.y;
-    // 		// }
-    // 		break;
-    // 	case WM_LBUTTONDOWN:
-    // 		if (stage == Stage::Hovered)
-    // 		{
-    // 			stage = Stage::Pushed;	
-    // 			cur_x = msg.x;
-    // 			cur_y = msg.y;
-    // 		}
-    // 		break;
-    // 	// case WM_LBUTTONUP:
-    // 	// 	if (stage == Stage::Pushed)
-    // 	// 		OnClick();
-    // 	// 	break;
-    // 	default:
-    // 		break;
-    // }
     switch (msg.message)
     {
         case WM_MOUSEMOVE:

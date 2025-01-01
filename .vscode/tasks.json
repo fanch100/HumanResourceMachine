@@ -103,6 +103,7 @@
                 "./src/game_stop_button.cpp",
                 "./src/game_file_input_button.cpp",
                 "./src/game_input_button.cpp",
+                "./src/game_delete_button.cpp",
 
                 "./src/scene.cpp",
                 "./src/scene_manager.cpp",

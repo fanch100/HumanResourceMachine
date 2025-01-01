@@ -115,15 +115,14 @@ void Level::InitGame()
     }
     //操作滑块初始化
     
-    int cur_slider_top = 100, cur_slider_left = 900;
+    int cur_slider_top = 20, cur_slider_left = 900;
     for (int i = 0; i < 8; i++)
     {
         if (is_useful >> i & 1)//可以使用
         {
             RECT pos = {cur_slider_left, cur_slider_top, cur_slider_left + slider_width, cur_slider_top + slider_height};
-            std::string str = operation_number_to_name[i+1];
-            std:: cout << "Slider_str:" << str << std::endl;
-            slider_list.push_back(Slider(pos,_T(str.c_str())));
+            
+            slider_list.push_back(Slider(pos,i+1));
             //Slider* slider = new Slider(pos,_T(String[i].c_str()));
             //slider_list.push_back(slider);
             cur_slider_top += slider_height + 10;

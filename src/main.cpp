@@ -12,7 +12,7 @@ const int block_height = 40;
 const int player_width = 60;
 const int player_height = 60;
 
-const int slider_width = 60;
+const int slider_width = 100;
 const int slider_height = 30;
 
 const int space_width = 60;
@@ -22,7 +22,7 @@ const int operation_width = 200;
 const int operation_height = 30;
 
 const Point inbox_pos = {20, 300};
-const Point outbox_pos = {780, 300};
+const Point outbox_pos = {820, 300};
 
 const int move_speed = 5;
 
@@ -158,6 +158,7 @@ Point ptn_game_play_btn = {850, 600};
 Point ptn_game_stop_btn = {950, 600};
 Point ptn_game_file_input_btn = {850, 500};
 Point ptn_game_input_btn = {950, 500};
+Point ptn_game_delete_btn = {950, 400};
 
 StartButton menu_btn_start = StartButton({(window_width-button_width)/2-200, window_height/2+100, (window_width-button_width)/2-200+button_width, window_height/2+100+button_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"));
 MenuQuitButton menu_btn_quit = MenuQuitButton({(window_width-button_width)/2+200, window_height/2+100, (window_width-button_width)/2+200+button_width, window_height/2+100+button_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"));
@@ -167,6 +168,7 @@ GamePlayButton game_play_btn = GamePlayButton({ptn_game_play_btn.x, ptn_game_pla
 GameStopButton game_stop_btn = GameStopButton({ptn_game_stop_btn.x, ptn_game_stop_btn.y, ptn_game_stop_btn.x + button_width, ptn_game_stop_btn.y + button_height}, _T("images/game_play_btn_default.png"), _T("images/game_play_btn_hovered.png"), _T("images/game_play_btn_pushed.png"));
 GameFileInputButton game_file_input_btn = GameFileInputButton({ptn_game_file_input_btn.x, ptn_game_file_input_btn.y, ptn_game_file_input_btn.x + button_width, ptn_game_file_input_btn.y + button_height}, _T("images/game_play_btn_default.png"), _T("images/game_play_btn_hovered.png"), _T("images/game_play_btn_pushed.png"));
 GameInputButton game_input_btn = GameInputButton({ptn_game_input_btn.x, ptn_game_input_btn.y, ptn_game_input_btn.x + button_width, ptn_game_input_btn.y + button_height}, _T("images/game_play_btn_default.png"), _T("images/game_play_btn_hovered.png"), _T("images/game_play_btn_pushed.png"));
+GameDeleteButton game_delete_btn = GameDeleteButton({ptn_game_delete_btn.x, ptn_game_delete_btn.y, ptn_game_delete_btn.x + button_width, ptn_game_delete_btn.y + button_height}, _T("images/game_play_btn_default.png"), _T("images/game_play_btn_hovered.png"), _T("images/game_play_btn_pushed.png"));
 
 int main()
 {

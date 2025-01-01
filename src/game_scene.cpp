@@ -60,7 +60,7 @@ void GameScene::Init()
 {
     cur_level->InitGame();
     //文本框初始化
-    Point ptn_input_box = {850, 400}; 
+    Point ptn_input_box = {900, 300}; 
     input_box = new TextBox();
     input_box->Init(RECT{ ptn_input_box.x, ptn_input_box.y, ptn_input_box.x + 100, ptn_input_box.y + 50}, 100);
     Point ptn_file_input_box = {100,650};
@@ -81,7 +81,8 @@ void GameScene::Draw()
         std :: cout << "Operation List Size = " << operation_list.size() << std :: endl;
         game_play_btn.Draw(_T("Play"));
         game_input_btn.Draw(_T("Input"));
-        game_file_input_btn.Draw(_T("Input File"));
+        game_delete_btn.Draw(_T("Delete"));
+        game_file_input_btn.Draw(_T("FileInput"));
     }
     else
     {
@@ -160,6 +161,7 @@ void GameScene::ProcessMessage(const ExMessage &msg)
         game_play_btn.ProcessMessage(msg);
         game_input_btn.ProcessMessage(msg);
         game_file_input_btn.ProcessMessage(msg);
+        game_delete_btn.ProcessMessage(msg);
     }
     game_stop_btn.ProcessMessage(msg);
     game_btn_quit.ProcessMessage(msg);//quit最好设置在下面
@@ -203,4 +205,13 @@ void GameScene::InputUpdate()
     std :: cout << t_str << std::endl;
     game_result = CreateOperation(str);
     input_box->Clear();
+}
+void GameScene::DeleteUpdate()
+{
+    if (operation_list.size() == 0) 
+    {
+        game_result = -5;
+        return;
+    }
+    operation_list.pop_back();
 }

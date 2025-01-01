@@ -13,6 +13,8 @@ extern GameStopButton game_stop_btn;
 extern GamePlayButton game_play_btn;
 extern GameFileInputButton game_file_input_btn;
 extern GameInputButton game_input_btn;
+extern GameDeleteButton game_delete_btn;
+
 extern std::ifstream fin;
 extern const int INF;
 extern std::unordered_map<std::string, int> operation_name_to_number;
@@ -37,6 +39,7 @@ class GameScene : public Scene
         void Quit();
         int CreateOperation(const std::string& line_str);
         int FileInit(LPCTSTR path);
+        void DeleteUpdate();
         std::vector<Operation> operation_list;
         int game_result = 0;
     private:

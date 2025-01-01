@@ -9,10 +9,13 @@ extern const int window_height;
 extern const int slider_width;
 extern const int slider_height;
 
+extern std::unordered_map<std::string, int> operation_name_to_number;
+extern std::unordered_map<int, std::string> operation_number_to_name;
+
 class Slider
 {
 	public:
-		Slider(RECT pos, LPCTSTR str);
+		Slider(RECT pos, int type);
 		~Slider();
 		void Draw();
 		void ProcessMessage(const ExMessage &msg);
@@ -36,11 +39,10 @@ class Slider
 			Jump,
 			JumpIfZero
 		};
-		int type;
 		Stage stage;
 	private:
-		LPCTSTR str;
 		RECT position;
 		int cur_x, cur_y;
+		int type;
 		bool CheckCursorInSlider(int x, int y);
 };
