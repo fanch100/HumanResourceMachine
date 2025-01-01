@@ -50,8 +50,8 @@ void GameScene::Draw()
 {
     putimage_alpha(0, 0, &img_game_background);
     cur_level->Draw();
-    std :: cout << "update_result = " << update_result << std::endl;
-    if (update_result == 0)
+    std :: cout << "game_result = " << game_result << std::endl;
+    if (game_result == 0)
     {
         if (input_box != nullptr)
         {
@@ -69,15 +69,15 @@ void GameScene::Draw()
         settextstyle(20, 0, _T("monospace"));//设置字体
         RECT pos = {100, 100, 600, 400};
         std::string str;
-        if (update_result > 0)
+        if (game_result > 0)
         {
-            str = "Error on Instruction " + std::to_string(update_result);
+            str = "Error on Instruction " + std::to_string(game_result);
         }
-        else if (update_result == -1)
+        else if (game_result == -1)
         {
             str = "You Win!";
         }
-        else if (update_result == -2)
+        else if (game_result == -2)
         {
             str = "You Failed!";
         }
@@ -89,16 +89,16 @@ void GameScene::Draw()
 void GameScene::Update()
 {
     std::cout << "Game Scene Update" << std::endl;
-    update_result = cur_level->Update();
-    if (update_result > 0) 
+    game_result = cur_level->Update();
+    if (game_result > 0) 
     {
         std::cout << "Game Over" << std::endl;
     }
-    else if (update_result == -1) 
+    else if (game_result == -1) 
     {
         std::cout << "Game Win" << std::endl;
     }
-    else if (update_result == -2) std::cout << "Game Failed" << std::endl; 
+    else if (game_result == -2) std::cout << "Game Failed" << std::endl; 
 }
 void GameScene::ProcessMessage(const ExMessage &msg)
 {
@@ -119,7 +119,7 @@ void GameScene::ProcessMessage(const ExMessage &msg)
     // }
     
     cur_level->ProcessMessage(msg);
-    if (update_result == 0)
+    if (game_result == 0)
     {
         if (input_box != nullptr)
         {
@@ -141,4 +141,5 @@ void GameScene::Quit()
     }
     std::cout << "Game Scene Quit" << std::endl;
     operation_list.clear();
+    game_result = 0;
 }

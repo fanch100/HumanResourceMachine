@@ -15,7 +15,10 @@ void Operation::Draw(int color)
     settextstyle(20, 0, _T("monospace"));//设置字体
     //outtextxy(position.left+10, position.top+40, str);//输出文字
     // drawtext(_T((std::to_string(1)).c_str()), &position, DT_CENTER);
-    drawtext(_T(operation_number_to_name[type].c_str()), &position, DT_CENTER);
+    std::string str;
+    if (type == 1 || type == 2) str = operation_number_to_name[type];
+    else str = operation_number_to_name[type] + " " + std::to_string(value);
+    drawtext(_T(str.c_str()), &position, DT_CENTER);
 }
 
 void Operation::DrawTriangle()

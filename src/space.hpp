@@ -19,6 +19,6 @@ class Space
 		RECT GetPosition();
 	private:
 		RECT position;
-		int value;
+		int value;//空地的编号
         Block* block = nullptr;
 };

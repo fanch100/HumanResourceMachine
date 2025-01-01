@@ -21,23 +21,15 @@ Block* Player::GetBlock()
 {
     return block;
 }
-void Player::SetValue(int value)
+void Player::SetBlock(Block* block)
 {
-    this->value = value;
+    this->block = block;
 }
 void Player::SetPosition(RECT pos)
 {
     this->position = pos;
 }
-int Player::GetValue()
-{
-    return value;
-}
 RECT Player::GetPosition()
 {
     return position;
-}
-void Player::SetBlock(Block* block)
-{
-    this->block = block;
 }

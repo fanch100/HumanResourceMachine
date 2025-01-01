@@ -22,7 +22,7 @@ const int operation_width = 200;
 const int operation_height = 50;
 
 const Point inbox_pos = {20, 300};
-const Point outbox_pos = {600, 300};
+const Point outbox_pos = {700, 300};
 
 const int move_speed = 5;
 

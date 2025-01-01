@@ -16,7 +16,6 @@ class Block
         Block(const Block& block);
 		~Block();
 		void Draw(int color);
-		bool Move(int x, int y);
 		void SetValue(int value);
 		int GetValue();
 		RECT GetPosition();

@@ -72,7 +72,7 @@ void Level::Draw()
     for (Slider &slider : slider_list) slider.Draw();
     for (Space &space : space_list) space.Draw(RED);
     player->Draw();
-    game_scene.operation_list[cur_step-1].DrawTriangle();
+    if (last_step>0) game_scene.operation_list[last_step-1].DrawTriangle();
     
     // POINT pts[] = { {50, 100}, {200, 200}, {200, 50} };
     // fillpolygon(pts, 3);
@@ -91,6 +91,7 @@ void Level::InitGame()
     for (int i : std_input)
     {
         RECT pos = {cur_block_left, cur_block_top, cur_block_left + block_width, cur_block_top + block_height};
+        std :: cout << "i is " << i << std::endl;
         block_list.push_back(Block(pos, 0, i));
         cur_block_top += block_height + 10;
     }
@@ -134,12 +135,12 @@ void Level::InitGame()
     player = new Player(RECT{20, 20, 20 + player_width, 20 + player_height});
 
     //初始化
-    cur_step = 1;
 }
 void Level::QuitGame()
 {
     this-> block_list.clear();
     this-> slider_list.clear();
+    this-> space_list.clear();
     this-> user_output.clear();
     // free_space.clear();
     if (player != nullptr)
@@ -147,18 +148,19 @@ void Level::QuitGame()
         delete player;
         player = nullptr;
     }
-    if (cur_block != nullptr)
-    {
-        cur_block = (Block*)nullptr;
-    }
     for (int i = 0; i < new_block.size(); ++i)
     {
         delete new_block[i];
     }
     this-> new_block.clear();
-    this-> out_block.clear();
+    this-> output_block.clear();
     this-> nxt_input = -1;
     std :: cout << "Level::QuitGame()" << std :: endl;
+
+    nxt_input = -1;
+    cur_step = 1;
+    last_step = 0;
+    is_failed = false;
 }
 int Level::GetNextStep(int cur_step){
     int op = game_scene.operation_list[cur_step-1].GetType();
@@ -168,10 +170,9 @@ int Level::GetNextStep(int cur_step){
     if (!(is_useful>>(op-1)&1)) return -1;
     if (op == (int)OperationType::Inbox) //inbox 只有结束
     {
-        
         std::cout << "inbox " << x << std::endl;
         ++nxt_input;
-        if (nxt_input >= std_input.size()) return input_size + 1;
+        if (nxt_input >= std_input.size()) return 0;
         return cur_step + 1;
     }
     else if (op == (int)OperationType::Outbox) 
@@ -230,9 +231,11 @@ void Level::Play(int cur_step){
         RECT pos = player->GetPosition();
         if (player->GetBlock() != nullptr)
         {
+            std:: cout << "player->GetBlock() != nullptr" << std::endl;
             player->GetBlock()->is_hiding = true;
         }
         player->SetBlock(&block_list[nxt_input]);
+        std :: cout <<"player->SetBlock->Getvalue():" << player->GetBlock()->GetValue() << std::endl;
         player->GetBlock()->SetPosition({inbox_pos.x, inbox_pos.y - 20, inbox_pos.x + block_width, inbox_pos.y - 20 + block_height});
     }
     else if (op == (int)OperationType::Outbox)
@@ -241,12 +244,18 @@ void Level::Play(int cur_step){
         RECT pos = player->GetPosition();
         player->GetBlock()->SetPosition({outbox_pos.x, outbox_pos.y - 20, outbox_pos.x + block_width, outbox_pos.y - 20 + block_height});
         user_output.push_back(player->GetBlock()->GetValue());
+        for (Block* block : output_block) 
+        {
+            pos = block->GetPosition();
+            block->SetPosition({pos.left, pos.top + block_height + 10, pos.right, pos.bottom + block_height + 10});
+        }
+        output_block.push_back(player->GetBlock());
         player->SetBlock(nullptr);
     }
     else if (op == (int)OperationType::CopyFrom)
     {
         RECT pos = space_list[x].GetPosition();
-        player->SetPosition({pos.left, pos.top - 20, pos.left + player_width, pos.top - 20 + player_height});
+        player->SetPosition({pos.left, pos.top - 50, pos.left + player_width, pos.top - 50 + player_height});
         pos = player->GetPosition();
         Block* block = new Block(*(space_list[x].GetBlock()));
         new_block.push_back(block);
@@ -261,7 +270,7 @@ void Level::Play(int cur_step){
     {
         std::cout << "CopyTo" << std::endl;
         RECT pos = space_list[x].GetPosition();
-        player->SetPosition({pos.left, pos.top - 20, pos.left + player_width, pos.top - 20 + player_height});
+        player->SetPosition({pos.left, pos.top - 50, pos.left + player_width, pos.top - 50 + player_height});
         Block* block = new Block(*(player->GetBlock()));
         new_block.push_back(block);
         if (space_list[x].GetBlock() != nullptr)
@@ -269,19 +278,21 @@ void Level::Play(int cur_step){
             space_list[x].GetBlock()->is_hiding = true;
         }
         block->SetPosition({pos.left + 10, pos.top + 10, pos.left + 10 + block_width , pos.top + 10 + block_height});
+        std :: cout << "Value:" << block->GetValue() << std :: endl;
         space_list[x].SetBlock(block);
+        std :: cout << "Value:" << space_list[x].GetBlock()->GetValue() << std :: endl;
     }
     else if (op == (int)OperationType::Add)
     {
         RECT pos = space_list[x].GetPosition();
-        player->SetPosition({pos.left, pos.top - 20, pos.left + player_width, pos.top - 20 + player_height});
-        player->SetValue(player->GetValue() + space_list[x].GetValue());
+        player->SetPosition({pos.left, pos.top - 50, pos.left + player_width, pos.top - 50 + player_height});
+        player->GetBlock()->SetValue(player->GetBlock()->GetValue() + space_list[x].GetBlock()->GetValue());
     }
     else if (op == (int)OperationType::Sub) 
     {
         RECT pos = space_list[x].GetPosition();
-        player->SetPosition({pos.left, pos.top - 20, pos.left + player_width, pos.top - 20 + player_height});
-        player->SetValue(player->GetValue() - space_list[x].GetValue());
+        player->SetPosition({pos.left, pos.top - 50, pos.left + player_width, pos.top - 50 + player_height});
+        player->GetBlock()->SetValue(player->GetBlock()->GetValue() - space_list[x].GetBlock()->GetValue());
     }
     else if (op == (int)OperationType::Jump) 
     {
@@ -291,10 +302,11 @@ void Level::Play(int cur_step){
     {
         ;
     }
-    // if (player.GetBlock() != nullptr)
-    // {
-
-    // }
+    if (player->GetBlock() != nullptr)
+    {
+        RECT pos = player->GetPosition();
+        player->GetBlock()->SetPosition({pos.left, pos.top - 20, pos.left + block_width, pos.top - 20 + block_height});
+    }
 }
 bool Level::Check()
 {
@@ -315,11 +327,16 @@ int Level::Update()
     {
         int nxt_step = GetNextStep(cur_step);
         if (nxt_step == -1) return cur_step;
-        Play(cur_step);
-        std :: cout << "nxt_step: " << nxt_step << std :: endl;
-        cur_step = nxt_step;
-        is_finished = false;
-        return 0;
+        else if (nxt_step == 0) ;//0表示inbox操作找不到对应的Block，即退出循环
+        else
+        {
+            Play(cur_step);
+            std :: cout << "nxt_step: " << nxt_step << std :: endl;
+            last_step = cur_step;
+            cur_step = nxt_step;
+            return 0;
+        }
+        
     }
     if (Check()) return -1;
     else return -2;

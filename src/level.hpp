@@ -51,12 +51,11 @@ class Level
 		std::vector<int> user_output;
 		std::vector<Space> space_list;
         std::vector<Block*> new_block;
-        std::vector<Block*> out_block;
+        std::vector<Block*> output_block;
         Player* player = (Player*)nullptr;
-		Block* cur_block = (Block*)nullptr;
     	int nxt_input = -1;
 		int cur_step = 1;
+		int last_step = 0;
 		bool is_failed = false;
-		bool is_finished = false;
         int GetNextStep(int cur_step);
 };
