@@ -138,9 +138,9 @@ void Level::InitGame()
 }
 void Level::QuitGame()
 {
-    this->block_list.clear();
-    this->slider_list.clear();
-    this->user_output.clear();
+    this-> block_list.clear();
+    this-> slider_list.clear();
+    this-> user_output.clear();
     // free_space.clear();
     if (player != nullptr)
     {
@@ -155,8 +155,9 @@ void Level::QuitGame()
     {
         delete new_block[i];
     }
-    new_block.clear();
-    this->nxt_input = -1;
+    this-> new_block.clear();
+    this-> out_block.clear();
+    this-> nxt_input = -1;
     std :: cout << "Level::QuitGame()" << std :: endl;
 }
 int Level::GetNextStep(int cur_step){
@@ -245,39 +246,41 @@ void Level::Play(int cur_step){
     else if (op == (int)OperationType::CopyFrom)
     {
         RECT pos = space_list[x].GetPosition();
-        player->SetPosition({pos.left, pos.top - 20, pos.right, pos.bottom - 20});
-        
+        player->SetPosition({pos.left, pos.top - 20, pos.left + player_width, pos.top - 20 + player_height});
+        pos = player->GetPosition();
         Block* block = new Block(*(space_list[x].GetBlock()));
         new_block.push_back(block);
         if (player->GetBlock() != nullptr)
         {
             player->GetBlock()->is_hiding = true;
         }
+        block->SetPosition({pos.left, pos.top - 20, pos.left + block_width, pos.top - 20 + block_height});
         player->SetBlock(block);
     }
     else if (op == (int)OperationType::CopyTo) 
     {
         std::cout << "CopyTo" << std::endl;
         RECT pos = space_list[x].GetPosition();
-        player->SetPosition({pos.left, pos.top - 20, pos.right, pos.bottom - 20});
+        player->SetPosition({pos.left, pos.top - 20, pos.left + player_width, pos.top - 20 + player_height});
         Block* block = new Block(*(player->GetBlock()));
         new_block.push_back(block);
         if (space_list[x].GetBlock() != nullptr)
         {
             space_list[x].GetBlock()->is_hiding = true;
         }
+        block->SetPosition({pos.left + 10, pos.top + 10, pos.left + 10 + block_width , pos.top + 10 + block_height});
         space_list[x].SetBlock(block);
     }
     else if (op == (int)OperationType::Add)
     {
         RECT pos = space_list[x].GetPosition();
-        player->SetPosition({pos.left, pos.top - 20, pos.right, pos.bottom - 20});
+        player->SetPosition({pos.left, pos.top - 20, pos.left + player_width, pos.top - 20 + player_height});
         player->SetValue(player->GetValue() + space_list[x].GetValue());
     }
     else if (op == (int)OperationType::Sub) 
     {
         RECT pos = space_list[x].GetPosition();
-        player->SetPosition({pos.left, pos.top - 20, pos.right, pos.bottom - 20});
+        player->SetPosition({pos.left, pos.top - 20, pos.left + player_width, pos.top - 20 + player_height});
         player->SetValue(player->GetValue() - space_list[x].GetValue());
     }
     else if (op == (int)OperationType::Jump) 
@@ -288,6 +291,10 @@ void Level::Play(int cur_step){
     {
         ;
     }
+    // if (player.GetBlock() != nullptr)
+    // {
+
+    // }
 }
 bool Level::Check()
 {

@@ -15,8 +15,8 @@ const int player_height = 60;
 const int slider_width = 60;
 const int slider_height = 30;
 
-const int space_width = 50;
-const int space_height = 50;
+const int space_width = 60;
+const int space_height = 60;
 
 const int operation_width = 200;
 const int operation_height = 50;

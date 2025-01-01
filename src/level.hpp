@@ -51,6 +51,7 @@ class Level
 		std::vector<int> user_output;
 		std::vector<Space> space_list;
         std::vector<Block*> new_block;
+        std::vector<Block*> out_block;
         Player* player = (Player*)nullptr;
 		Block* cur_block = (Block*)nullptr;
     	int nxt_input = -1;
