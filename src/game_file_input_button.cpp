@@ -10,4 +10,5 @@ GameFileInputButton::~GameFileInputButton() = default;
 void GameFileInputButton::OnClick()
 {
     std :: cout << "GameFileInputButton::OnClick()" << std :: endl;
+    game_scene.FileInputUpdate();
 }

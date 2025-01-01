@@ -10,4 +10,7 @@ GameStopButton::~GameStopButton() = default;
 void GameStopButton::OnClick()
 {
     std:: cout << "GameStopButton::OnClick()" << std::endl;
+    cur_level->QuitGame();
+    cur_level->InitGame();
+    game_scene.game_result = 0;
 }

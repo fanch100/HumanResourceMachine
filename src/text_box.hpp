@@ -8,6 +8,7 @@ class TextBox
 public:
     TextBox();
     void Init(RECT pos, int max);
+    void Clear();
     ~TextBox();
     TCHAR* GetText();
 
@@ -20,4 +21,5 @@ private:
     TCHAR* text = NULL;                              // 控件内容
     size_t maxlen = 0;
     bool is_input = false;             // 是否输入中
+    int width; //字符串宽度
 };

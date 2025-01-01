@@ -8,6 +8,7 @@
 #include <vector>
 #include <algorithm>
 #include <unordered_map>
+#include <string.h>
 #include <math.h>
 
 class Button;
@@ -18,6 +19,7 @@ class LevelSelectQuitButton;
 class GameQuitButton;
 class GamePlayButton;
 class GameFileInputButton;
+class GameInputButton;
 
 class Scene;
 class SceneManager;

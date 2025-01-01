@@ -15,10 +15,13 @@ extern GameScene game_scene;
 extern const Point inbox_pos;
 extern const Point outbox_pos;
 
+extern std::unordered_map<std::string, int> operation_name_to_number;
+extern std::unordered_map<int, std::string> operation_number_to_name;
+
 class Level
 {
 	public:
-		Level(LPCTSTR path);
+		Level(LPCTSTR path, LPCTSTR path_state);
 		// Level& operator= (const Level& level);
 		// Level(const Level& level);
 		~Level();
@@ -29,6 +32,8 @@ class Level
 		void QuitGame();
         void Play(int cur_step);
 		bool Check();
+		bool is_completed;
+		void LevelComplete();
 	private:
 		enum class OperationType
 		{
@@ -57,5 +62,8 @@ class Level
 		int cur_step = 1;
 		int last_step = 0;
 		bool is_failed = false;
+		LPCTSTR path;
+		LPCTSTR path_state;
+		std::string level_info;
         int GetNextStep(int cur_step);
 };

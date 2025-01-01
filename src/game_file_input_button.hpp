@@ -6,7 +6,7 @@
 // #include "game_stage.hpp"
 // #include "level.hpp"
 
-extern SceneManager scene_manager;
+extern GameScene game_scene;
 
 class GameFileInputButton : public Button
 {

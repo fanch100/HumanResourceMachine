@@ -102,6 +102,7 @@
                 "./src/game_play_button.cpp",
                 "./src/game_stop_button.cpp",
                 "./src/game_file_input_button.cpp",
+                "./src/game_input_button.cpp",
 
                 "./src/scene.cpp",
                 "./src/scene_manager.cpp",
@@ -116,6 +117,7 @@
                 "./src/player.cpp",
                 "./src/space.cpp",
                 "./src/operation.cpp",
+                
 
                 "-leasyx",
                 "-lgdi32",

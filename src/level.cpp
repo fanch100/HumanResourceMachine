@@ -1,7 +1,9 @@
 #include "main.hpp"
 
-Level::Level(LPCTSTR path)
+Level::Level(LPCTSTR path, LPCTSTR path_state)
 {
+    this->path = path;
+    this->path_state = path_state;
     fin.open(path);
     if (!fin.is_open()) std::cerr << "File not found!" << std::endl;
     if (fin.eof()) std::cerr << "File reach the End!" << std::endl;
@@ -23,11 +25,18 @@ Level::Level(LPCTSTR path)
     }
     fin >> tmp;
     this->available_space=tmp;
-    fin >> is_useful;
+    fin >> is_useful; fin.get();
+    std::getline(fin,level_info);
     fin.close();
     fin.clear();
     fin.seekg(0, std::ios::beg);
 
+    fin.open(path_state);
+    fin >> tmp;
+    this->is_completed = tmp;
+    fin.close();
+    fin.clear();
+    fin.seekg(0, std::ios::beg);
     // player = new Player(RECT{20, 20, 20 + player_width, 20 + player_height});
 }
 // Level& Level::operator= (const Level& level)
@@ -74,6 +83,15 @@ void Level::Draw()
     player->Draw();
     if (last_step>0) game_scene.operation_list[last_step-1].DrawTriangle();
     
+    //顶部输出关卡信息
+    std::cout << "level_info:" << level_info << std::endl;
+    settextcolor(RED);//设置字体颜色
+    settextstyle(20, 0, _T("monospace"));//设置字体
+    RECT pos = {100, 20, 600, 70};
+    setbkcolor(0xeeeeee);   
+    setfillcolor(0xeeeeee);             
+    fillrectangle(pos.left, pos.top, pos.right, pos.bottom);
+    drawtext(_T(level_info.c_str()), &pos, DT_CENTER);
     // POINT pts[] = { {50, 100}, {200, 200}, {200, 50} };
     // fillpolygon(pts, 3);
 }
@@ -100,13 +118,16 @@ void Level::InitGame()
     int cur_slider_top = 100, cur_slider_left = 900;
     for (int i = 0; i < 8; i++)
     {
-        RECT pos = {cur_slider_left, cur_slider_top, cur_slider_left + slider_width, cur_slider_top + slider_height};
-        
-        //slider_list.push_back(Slider(pos,_T(std::to_string(i).c_str())));
-        slider_list.push_back(Slider(pos,_T("Block")));
-        //Slider* slider = new Slider(pos,_T(String[i].c_str()));
-        //slider_list.push_back(slider);
-        cur_slider_top += slider_height + 10;
+        if (is_useful >> i & 1)//可以使用
+        {
+            RECT pos = {cur_slider_left, cur_slider_top, cur_slider_left + slider_width, cur_slider_top + slider_height};
+            std::string str = operation_number_to_name[i+1];
+            std:: cout << "Slider_str:" << str << std::endl;
+            slider_list.push_back(Slider(pos,_T(str.c_str())));
+            //Slider* slider = new Slider(pos,_T(String[i].c_str()));
+            //slider_list.push_back(slider);
+            cur_slider_top += slider_height + 10;
+        }
     }
     // puts("YES");
     //空地初始化
@@ -236,13 +257,18 @@ void Level::Play(int cur_step){
         }
         player->SetBlock(&block_list[nxt_input]);
         std :: cout <<"player->SetBlock->Getvalue():" << player->GetBlock()->GetValue() << std::endl;
+        for (int i = nxt_input + 1; i < block_list.size(); ++i)
+        {
+            pos = block_list[i].GetPosition();
+            block_list[i].SetPosition({pos.left, pos.top + block_height - 10, pos.right, pos.bottom + block_height - 10});
+        }
         player->GetBlock()->SetPosition({inbox_pos.x, inbox_pos.y - 20, inbox_pos.x + block_width, inbox_pos.y - 20 + block_height});
     }
     else if (op == (int)OperationType::Outbox)
     {
         player->SetPosition({outbox_pos.x, outbox_pos.y, outbox_pos.x + player_width, outbox_pos.y + player_height});
         RECT pos = player->GetPosition();
-        player->GetBlock()->SetPosition({outbox_pos.x, outbox_pos.y - 20, outbox_pos.x + block_width, outbox_pos.y - 20 + block_height});
+        player->GetBlock()->SetPosition({outbox_pos.x, 350, outbox_pos.x + block_width, 350 + block_height});
         user_output.push_back(player->GetBlock()->GetValue());
         for (Block* block : output_block) 
         {
@@ -305,7 +331,7 @@ void Level::Play(int cur_step){
     if (player->GetBlock() != nullptr)
     {
         RECT pos = player->GetPosition();
-        player->GetBlock()->SetPosition({pos.left, pos.top - 20, pos.left + block_width, pos.top - 20 + block_height});
+        player->GetBlock()->SetPosition({pos.left + 5, pos.top - 30, pos.left + 5 + block_width, pos.top - 30 + block_height});
     }
 }
 bool Level::Check()
@@ -340,4 +366,15 @@ int Level::Update()
     }
     if (Check()) return -1;
     else return -2;
+}
+
+void Level::LevelComplete()
+{
+    is_completed = true;
+    fout.open(path_state);
+    if (!fout.is_open() || fout.eof()) std ::cerr << "Error opening file" << std :: endl;
+    fout << "1";
+    fout.close();
+    fout.clear();
+    fout.seekp(0, std::ios::beg);
 }

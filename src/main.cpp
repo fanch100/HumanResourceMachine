@@ -19,10 +19,10 @@ const int space_width = 60;
 const int space_height = 60;
 
 const int operation_width = 200;
-const int operation_height = 50;
+const int operation_height = 30;
 
 const Point inbox_pos = {20, 300};
-const Point outbox_pos = {700, 300};
+const Point outbox_pos = {780, 300};
 
 const int move_speed = 5;
 
@@ -56,6 +56,8 @@ IMAGE img_game_play_btn_default;
 IMAGE img_game_play_btn_hovered;
 IMAGE img_game_play_btn_pushed;
 
+IMAGE img_level_complete;
+
 SceneManager scene_manager;
 MenuScene menu_scene;
 LevelSelectScene level_select_scene;
@@ -82,6 +84,8 @@ void load_resources()
     loadimage(&img_game_play_btn_default, _T("images/game_play_btn_default.png"), button_width, button_height, true);
 	loadimage(&img_game_play_btn_hovered, _T("images/game_play_btn_hovered.png"), button_width, button_height, true);
 	loadimage(&img_game_play_btn_pushed, _T("images/game_play_btn_pushed.png"), button_width, button_height, true);
+
+	loadimage(&img_level_complete, _T("images/level_complete.png"), button_width, button_height, true);
 	init_select_level();
     init_map();
 }
@@ -145,17 +149,24 @@ void init_select_level()
 	for (int i = 1; i <= level_number; i++)
 	{
 		std::string path = "level_info/level_" + std::to_string(i) + ".bin";
-		level_list.push_back(Level(_T(path.c_str())));
+		std::string path_state = "level_info/level_state_" + std::to_string(i) + ".bin";
+		level_list.push_back(Level(_T(path.c_str()),_T(path_state.c_str())));
 		level_select_btn_list.push_back(LevelSelectButton({(window_width-button_width)/2+ i*200 - mid*200, window_height/2+100, (window_width-button_width)/2+ i*200 - mid*200 + button_width, window_height/2+100+button_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"), i));
 	}
 }
+Point ptn_game_play_btn = {850, 600};
+Point ptn_game_stop_btn = {950, 600};
+Point ptn_game_file_input_btn = {850, 500};
+Point ptn_game_input_btn = {950, 500};
+
 StartButton menu_btn_start = StartButton({(window_width-button_width)/2-200, window_height/2+100, (window_width-button_width)/2-200+button_width, window_height/2+100+button_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"));
 MenuQuitButton menu_btn_quit = MenuQuitButton({(window_width-button_width)/2+200, window_height/2+100, (window_width-button_width)/2+200+button_width, window_height/2+100+button_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"));
 LevelSelectQuitButton level_select_btn_quit = LevelSelectQuitButton({window_width-button_width, window_height-button_height, window_width, window_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"));
 GameQuitButton game_btn_quit = GameQuitButton({window_width-button_width, window_height-button_height, window_width, window_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"));
-GamePlayButton game_play_btn = GamePlayButton({900, 600, 900 + button_width, 600 + button_height}, _T("images/game_play_btn_default.png"), _T("images/game_play_btn_hovered.png"), _T("images/game_play_btn_pushed.png"));
-GameStopButton game_stop_btn = GameStopButton({900, 650, 900 + button_width, 650 + button_height}, _T("images/game_play_btn_default.png"), _T("images/game_play_btn_hovered.png"), _T("images/game_play_btn_pushed.png"));
-GameFileInputButton game_file_input_btn = GameFileInputButton({1000, 600, 1000 + button_width, 600 + button_height}, _T("images/game_play_btn_default.png"), _T("images/game_play_btn_hovered.png"), _T("images/game_play_btn_pushed.png"));
+GamePlayButton game_play_btn = GamePlayButton({ptn_game_play_btn.x, ptn_game_play_btn.y, ptn_game_play_btn.x + button_width, ptn_game_play_btn.y + button_height}, _T("images/game_play_btn_default.png"), _T("images/game_play_btn_hovered.png"), _T("images/game_play_btn_pushed.png"));
+GameStopButton game_stop_btn = GameStopButton({ptn_game_stop_btn.x, ptn_game_stop_btn.y, ptn_game_stop_btn.x + button_width, ptn_game_stop_btn.y + button_height}, _T("images/game_play_btn_default.png"), _T("images/game_play_btn_hovered.png"), _T("images/game_play_btn_pushed.png"));
+GameFileInputButton game_file_input_btn = GameFileInputButton({ptn_game_file_input_btn.x, ptn_game_file_input_btn.y, ptn_game_file_input_btn.x + button_width, ptn_game_file_input_btn.y + button_height}, _T("images/game_play_btn_default.png"), _T("images/game_play_btn_hovered.png"), _T("images/game_play_btn_pushed.png"));
+GameInputButton game_input_btn = GameInputButton({ptn_game_input_btn.x, ptn_game_input_btn.y, ptn_game_input_btn.x + button_width, ptn_game_input_btn.y + button_height}, _T("images/game_play_btn_default.png"), _T("images/game_play_btn_hovered.png"), _T("images/game_play_btn_pushed.png"));
 
 int main()
 {
@@ -164,28 +175,30 @@ int main()
 	initgraph(1280, 720);
 	ExMessage msg;
 	load_resources();
-
 	BeginBatchDraw();
+
 	HWND hwnd = GetHWnd();
-	SetWindowText(hwnd,"Hello");
+	// SetWindowText(hwnd,"Hello");
 	
 	
-	for (int i = 0; i < 2; i++)
-	{
-		std::string path = "images/pixil-frame-" + std::to_string(1) + ".png";
-		loadimage(&img, _T(path.c_str()));
-		putimage(0 + i*100,0 + i*100,&img);
-	}
+	// for (int i = 0; i < 2; i++)
+	// {
+	// 	std::string path = "images/pixil-frame-" + std::to_string(1) + ".png";
+	// 	loadimage(&img, _T(path.c_str()));
+	// 	putimage(0 + i*100,0 + i*100,&img);
+	// }
 	
-	loadimage(&img,_T("images/btn_default.png"));
-	putimage_alpha(0, 0, &img_btn_default);
+	// loadimage(&img,_T("images/btn_default.png"));
+	// putimage_alpha(0, 0, &img_btn_default);
 	
 
 	setbkmode(TRANSPARENT);//显示透明文字
 	settextcolor(YELLOW);//设置字体颜色为蓝色
 	settextstyle(20, 0, _T("monospace"));//设置字体
-	outtextxy(50, 30, _T("HumanResourceMachine"));//输出文字
-    scene_manager.SetScene(&menu_scene);
+	// outtextxy(50, 30, _T("HumanResourceMachine"));//输出文字
+    
+	
+	scene_manager.SetScene(&menu_scene);
 
 	
 	while (true)

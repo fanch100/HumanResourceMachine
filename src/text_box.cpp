@@ -57,19 +57,24 @@ void TextBox::Draw()
     settextstyle(20, 0, _T("monospace"));//设置字体       
     fillrectangle(position.left, position.top, position.right, position.bottom);
     outtextxy(position.left + 10, position.top + 5, text);
-}
 
+    line(position.left + 10 + width + 1, position.top + 3, position.left + 10 + width + 1, position.bottom - 3);
+}
+void TextBox::Clear()
+{
+    memset(text, 0, sizeof(text));
+}
 void TextBox::ProcessMessage(const ExMessage &msg)
 {
     // std :: cout << "TextBox::ProcessMessage" << std::endl;
-    // setlinecolor(BLACK);          
+    // setlinecolor(BLACK)c;          
     // setbkcolor(WHITE);              
     // setfillcolor(WHITE);           
     // fillrectangle(position.left, position.top, position.right, position.bottom);
     // settextstyle(20, 0, _T("monospace"));//设置字体
     // outtextxy(position.left + 10, position.top + 5, text);
 
-    int width = textwidth(text);    // 字符串总宽度
+    width = textwidth(text);    // 字符串总宽度
     if (msg.message == WM_LBUTTONDOWN)
     {
         if (CheckCursorInTextBox(msg.x,msg.y)) is_input = true;// 鼠标点击文本框内，开始文本输入
@@ -80,29 +85,27 @@ void TextBox::ProcessMessage(const ExMessage &msg)
         size_t len = _tcslen(text);
         switch (msg.ch)
         {
-        case '\b':                // 用户按退格键，删掉一个字符
-            if (len > 0)
-            {
-                text[len - 1] = 0;
-                width = textwidth(text);
-                // clearrectangle(position.left + 10 + width, position.top + 1, position.right - 1, position.bottom - 1);
-            }
-            break;
-        case '\r':                // 用户按回车键，结束文本输入
-        case '\n':
-            is_input = false;
-            std :: cout << "Text=\"" << text  << '\"'<< std :: endl;
-            break;
-        default:                // 用户按其它键，接受文本输入
-            if (len < maxlen - 1)
-            {
-                text[len++] = msg.ch;
-                text[len] = 0;
-
-                // clearrectangle(position.left + 10 + width + 1, position.top + 3, position.left + 10 + width + 1, position.bottom - 3);    // 清除画的光标
-                // width = textwidth(text);                // 重新计算文本框宽度
-                // outtextxy(position.left + 10, position.top + 5, text);        // 输出新的字符串
-            }
+            case '\b':                // 用户按退格键，删掉一个字符
+                if (len > 0)
+                {
+                    text[len - 1] = 0;
+                    width = textwidth(text);
+                    // clearrectangle(position.left + 10 + width, position.top + 1, position.right - 1, position.bottom - 1);
+                }
+                break;
+            case '\r':                // 用户按回车键，结束文本输入
+            case '\n':
+                is_input = false;
+                std :: cout << "Text=\"" << text  << '\"'<< std :: endl;
+                break;
+            default:                // 用户按其它键，接受文本输入
+                if (len < maxlen - 1)
+                {
+                    text[len++] = msg.ch;
+                    text[len] = 0;
+                    width = textwidth(text);                // 重新计算文本框宽度
+                }
         }
+        
     }
 }
