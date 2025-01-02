@@ -8,10 +8,11 @@ class Foo
     int x, y;
 public:
     Foo(int x, int y);
+    Foo& operator=(const Foo& foo);
+    Foo(const Foo& foo);
     int getX();
     void setX();
-
-    virtual void outXY() = 0;
+    virtual void outXY();
 protected:
     int getY();
 private:

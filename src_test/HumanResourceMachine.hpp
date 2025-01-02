@@ -6,3 +6,5 @@
 #include "Foo2.hpp"
 #include "classes.hpp"
 
+#include <vector>
+

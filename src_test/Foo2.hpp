@@ -10,5 +10,5 @@ class Foo2 : public Foo
 public:
     Foo2(int x, int y);
     ~Foo2();
-    void outXY() override; 
+    void outXY() override;
 };
