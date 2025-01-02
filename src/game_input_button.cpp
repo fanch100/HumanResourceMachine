@@ -9,6 +9,5 @@ GameInputButton::GameInputButton(RECT pos, LPCTSTR path_btn_default, LPCTSTR pat
 GameInputButton::~GameInputButton() = default;
 void GameInputButton::OnClick()
 {
-    std :: cout << "GameInputButton::OnClick()" << std :: endl;
     game_scene.InputUpdate();
 }

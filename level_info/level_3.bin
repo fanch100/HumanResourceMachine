@@ -4,4 +4,4 @@
 7 -3 
 3 
 255
-从输入序列中依次取2个数字，如果相等则将其中一个输出，否则扔掉。重复这个过程直到输入传送带为空。
+For each 2 numbers in the input sequence, output one of them if they are equal, otherwise do nothing, Repeat .

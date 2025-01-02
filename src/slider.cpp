@@ -19,7 +19,6 @@ void Slider::Draw()
     settextstyle(20, 0, _T("monospace"));//设置字体
     //outtextxy(position.left+10, position.top+40, str);//输出文字
     std::string str = operation_number_to_name[this->type];
-    std:: cout << "Slider_str:" << str << std::endl;
     drawtext(_T(str.c_str()), &position, DT_CENTER);
 }
 void Slider::ProcessMessage(const ExMessage &msg)

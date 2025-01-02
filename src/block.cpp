@@ -18,7 +18,6 @@ Block::Block(const Block& block)
 Block::~Block() = default;
 void Block::Draw(int color)
 {
-    std :: cout << "is_hiding:" << is_hiding << std :: endl;
     if (is_hiding == true) return;
     
     // setlinecolor(color);

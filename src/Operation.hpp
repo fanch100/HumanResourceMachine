@@ -7,7 +7,7 @@ extern const int operation_height;
 class Operation
 {
 	public:
-		Operation(RECT pos, int value, int type);
+		Operation(RECT pos, int value, int type, int id);
 		~Operation();
 		void Draw(int color);
 		void DrawTriangle();
@@ -17,4 +17,5 @@ class Operation
 		RECT position;
 		int value;
         int type;
+		int id;
 };

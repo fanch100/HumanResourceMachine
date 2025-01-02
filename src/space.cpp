@@ -16,8 +16,6 @@ void Space::Draw(int color)
     // drawtext(_T((std::to_string(1)).c_str()), &position, DT_CENTER);
     drawtext(_T(std::to_string(value).c_str()), &position, DT_CENTER);
     if (this->block != nullptr) {
-        std :: cout << "value: " << value << std :: endl;
-        std :: cout << "Draw block: " << std::endl;
         this->block->Draw(color);
     }
 }

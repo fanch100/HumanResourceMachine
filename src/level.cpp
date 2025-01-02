@@ -1,7 +1,8 @@
 #include "main.hpp"
 
-Level::Level(LPCTSTR path, LPCTSTR path_state)
+Level::Level(LPCTSTR path, LPCTSTR path_state, int id)
 {
+    this->level_id = id;
     this->path = path;
     this->path_state = path_state;
     fin.open(path);
@@ -9,15 +10,14 @@ Level::Level(LPCTSTR path, LPCTSTR path_state)
     if (fin.eof()) std::cerr << "File reach the End!" << std::endl;
     size_t tmp;
     fin >> input_size;
-    std::cout << "path is " << path << std::endl;
-    std::cout << "input_size=" << input_size << std::endl;
+
     for (size_t i=1; i<=input_size; ++i) 
     {
         fin >> tmp;
         this->std_input.push_back(tmp);
     }
     fin >> output_size;
-    std::cout << "output_size=" << output_size << std::endl;
+    
     for (size_t i=1; i<=output_size; ++i) 
     {
         fin >> tmp;
@@ -84,10 +84,9 @@ void Level::Draw()
     if (last_step>0) game_scene.operation_list[last_step-1].DrawTriangle();
     
     //顶部输出关卡信息
-    std::cout << "level_info:" << level_info << std::endl;
     settextcolor(RED);//设置字体颜色
-    settextstyle(20, 0, _T("monospace"));//设置字体
-    RECT pos = {100, 20, 600, 70};
+    settextstyle(12, 6, _T("monospace"));//设置字体
+    RECT pos = {20, 20, 850, 70};
     setbkcolor(0xeeeeee);   
     setfillcolor(0xeeeeee);             
     fillrectangle(pos.left, pos.top, pos.right, pos.bottom);
@@ -104,12 +103,10 @@ void Level::ProcessMessage(const ExMessage &msg)
 void Level::InitGame()
 {
     //箱子初始化
-    std:: cout << "game_id is "  << level_value << std::endl;
     int cur_block_top = 350, cur_block_left = 20;
     for (int i : std_input)
     {
         RECT pos = {cur_block_left, cur_block_top, cur_block_left + block_width, cur_block_top + block_height};
-        std :: cout << "i is " << i << std::endl;
         block_list.push_back(Block(pos, 0, i));
         cur_block_top += block_height + 10;
     }
@@ -134,9 +131,6 @@ void Level::InitGame()
     int space_top = 400, space_left = 400;
     int space_row = (int)std::sqrt(available_space);
     int space_column = (available_space == 0)? 0 : (available_space-1) / space_row +1;
-    std :: cout << "space_row: " << space_row  << std::endl;
-    std :: cout << "space_column: " << space_column << std::endl;
-    std :: cout << "available_space: " << available_space << std::endl;
     space_top -= space_row * space_height / 2;
     space_left -= space_column * space_width / 2;
     for (int i = 0, k = 0; i < space_row && k < available_space; ++i)
@@ -144,15 +138,13 @@ void Level::InitGame()
         for (int j = 0; j < space_column && k < available_space; ++j, ++k)
         {
             RECT pos = {space_left+ j*space_width, space_top + i*space_height, space_left + (j+1)*space_width, space_top + (i+1)*space_height};
-            std :: cout << "pos.right = " << pos.right << std::endl;
-            std :: cout << "pos.bottom = " << pos.bottom << std::endl;
             space_list.push_back(Space(pos, 0, k));
         }
     }
     //文本框初始化
     
     //Player初始化
-    player = new Player(RECT{20, 20, 20 + player_width, 20 + player_height});
+    player = new Player(RECT{20, 200, 20 + player_width, 200 + player_height});
 
     //初始化
 }
@@ -175,22 +167,19 @@ void Level::QuitGame()
     this-> new_block.clear();
     this-> output_block.clear();
     this-> nxt_input = -1;
-    std :: cout << "Level::QuitGame()" << std :: endl;
 
     nxt_input = -1;
     cur_step = 1;
     last_step = 0;
     is_failed = false;
+    tot_step = 0;
 }
 int Level::GetNextStep(int cur_step){
     int op = game_scene.operation_list[cur_step-1].GetType();
     int x = game_scene.operation_list[cur_step-1].GetValue();
-    std :: cout << "op = " << op << std::endl;
-    std :: cout << "useful = " << is_useful << std::endl;
     if (!(is_useful>>(op-1)&1)) return -1;
     if (op == (int)OperationType::Inbox) //inbox 只有结束
     {
-        std::cout << "inbox " << x << std::endl;
         ++nxt_input;
         if (nxt_input >= std_input.size()) return 0;
         return cur_step + 1;
@@ -233,16 +222,8 @@ int Level::GetNextStep(int cur_step){
     }
     return -1;
 }
-// bool Level::chk(){
-//     // if (user_output.size()!=std_output.size()) return 0;
-//     // else {
-//     //     for (int i=0;i<user_output.size();++i){
-//     //         if (user_output[i]!=std_output[i]) return 0;
-//     //     }
-//     // }
-//     return 1;
-// }
 void Level::Play(int cur_step){
+    tot_step ++;
     int op = game_scene.operation_list[cur_step-1].GetType();
     int x = game_scene.operation_list[cur_step-1].GetValue();
     if (op == (int)OperationType::Inbox) //inbox 只有结束
@@ -251,15 +232,13 @@ void Level::Play(int cur_step){
         RECT pos = player->GetPosition();
         if (player->GetBlock() != nullptr)
         {
-            std:: cout << "player->GetBlock() != nullptr" << std::endl;
             player->GetBlock()->is_hiding = true;
         }
         player->SetBlock(&block_list[nxt_input]);
-        std :: cout <<"player->SetBlock->Getvalue():" << player->GetBlock()->GetValue() << std::endl;
         for (int i = nxt_input + 1; i < block_list.size(); ++i)
         {
             pos = block_list[i].GetPosition();
-            block_list[i].SetPosition({pos.left, pos.top + block_height - 10, pos.right, pos.bottom + block_height - 10});
+            block_list[i].SetPosition({pos.left, pos.top - block_height - 10, pos.right, pos.bottom - block_height - 10});
         }
         player->GetBlock()->SetPosition({inbox_pos.x, inbox_pos.y - 20, inbox_pos.x + block_width, inbox_pos.y - 20 + block_height});
     }
@@ -293,7 +272,6 @@ void Level::Play(int cur_step){
     }
     else if (op == (int)OperationType::CopyTo) 
     {
-        std::cout << "CopyTo" << std::endl;
         RECT pos = space_list[x].GetPosition();
         player->SetPosition({pos.left, pos.top - 50, pos.left + player_width, pos.top - 50 + player_height});
         Block* block = new Block(*(player->GetBlock()));
@@ -303,9 +281,7 @@ void Level::Play(int cur_step){
             space_list[x].GetBlock()->is_hiding = true;
         }
         block->SetPosition({pos.left + 10, pos.top + 10, pos.left + 10 + block_width , pos.top + 10 + block_height});
-        std :: cout << "Value:" << block->GetValue() << std :: endl;
         space_list[x].SetBlock(block);
-        std :: cout << "Value:" << space_list[x].GetBlock()->GetValue() << std :: endl;
     }
     else if (op == (int)OperationType::Add)
     {
@@ -347,7 +323,6 @@ int Level::Update()
 {
     //player->Move(500, 500);
     int operation_size = game_scene.operation_list.size();
-    std :: cout << "cur_step: " << cur_step << "siz: " << operation_size << std :: endl;
     if (cur_step <= operation_size)
     {
         int nxt_step = GetNextStep(cur_step);
@@ -356,7 +331,6 @@ int Level::Update()
         else
         {
             Play(cur_step);
-            std :: cout << "nxt_step: " << nxt_step << std :: endl;
             last_step = cur_step;
             cur_step = nxt_step;
             return 0;
@@ -370,8 +344,8 @@ int Level::Update()
 void Level::LevelComplete()
 {
     is_completed = true;
+    std::string path_state = "level_info/level_state_" + std::to_string(level_id) + ".bin";
     fout.open(path_state);
-    if (!fout.is_open() || fout.eof()) std ::cerr << "Error opening file" << std :: endl;
     fout << "1";
     fout.close();
     fout.clear();

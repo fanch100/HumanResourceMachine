@@ -12,7 +12,6 @@ void SceneManager::Draw()
 }
 void SceneManager::ProcessMessage(const ExMessage &msg)
 {
-    std:: cout<< "SceneManager::ProcessMessage" << std::endl;
     return current_scene->ProcessMessage(msg);
 }
 void SceneManager::ChangeScene(GameScene type)

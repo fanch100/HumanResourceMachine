@@ -22,7 +22,7 @@ const int operation_width = 200;
 const int operation_height = 30;
 
 const Point inbox_pos = {20, 300};
-const Point outbox_pos = {820, 300};
+const Point outbox_pos = {800, 300};
 
 const int move_speed = 5;
 
@@ -111,22 +111,6 @@ void init_map()
     operation_number_to_name[7] = "jump";
     operation_number_to_name[8] = "jumpifzero";
 }
-// class Animation
-// {
-// public:
-// 	Animation(LPCSTR path, int num, int interval)
-// 	{
-// 		interver_ms = interval;
-
-// 		TCHAR path_file[256];
-// 		for (int i = 0; i < num; i++)
-// 		{
-// 			sprintf(path_file, "%s%d.png", path, i);
-// 			images.push_back(path_file);
-// 		}
-// 	}
-// private:
-// }
 
 std::vector<LevelSelectButton> level_select_btn_list;
 
@@ -150,15 +134,15 @@ void init_select_level()
 	{
 		std::string path = "level_info/level_" + std::to_string(i) + ".bin";
 		std::string path_state = "level_info/level_state_" + std::to_string(i) + ".bin";
-		level_list.push_back(Level(_T(path.c_str()),_T(path_state.c_str())));
+		level_list.push_back(Level(_T(path.c_str()), _T(path_state.c_str()), i));
 		level_select_btn_list.push_back(LevelSelectButton({(window_width-button_width)/2+ i*200 - mid*200, window_height/2+100, (window_width-button_width)/2+ i*200 - mid*200 + button_width, window_height/2+100+button_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"), i));
 	}
 }
-Point ptn_game_play_btn = {850, 600};
-Point ptn_game_stop_btn = {950, 600};
-Point ptn_game_file_input_btn = {850, 500};
-Point ptn_game_input_btn = {950, 500};
-Point ptn_game_delete_btn = {950, 400};
+Point ptn_game_play_btn = {850, 650};
+Point ptn_game_stop_btn = {950, 650};
+Point ptn_game_file_input_btn = {850, 550};
+Point ptn_game_input_btn = {950, 550};
+Point ptn_game_delete_btn = {950, 450};
 
 StartButton menu_btn_start = StartButton({(window_width-button_width)/2-200, window_height/2+100, (window_width-button_width)/2-200+button_width, window_height/2+100+button_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"));
 MenuQuitButton menu_btn_quit = MenuQuitButton({(window_width-button_width)/2+200, window_height/2+100, (window_width-button_width)/2+200+button_width, window_height/2+100+button_height}, _T("images/btn_default.png"), _T("images/btn_hovered.png"), _T("images/btn_pushed.png"));
@@ -172,7 +156,6 @@ GameDeleteButton game_delete_btn = GameDeleteButton({ptn_game_delete_btn.x, ptn_
 
 int main()
 {
-    std::freopen("./texts/test.out","w",stdout);
 
 	initgraph(1280, 720);
 	ExMessage msg;
@@ -180,18 +163,6 @@ int main()
 	BeginBatchDraw();
 
 	HWND hwnd = GetHWnd();
-	// SetWindowText(hwnd,"Hello");
-	
-	
-	// for (int i = 0; i < 2; i++)
-	// {
-	// 	std::string path = "images/pixil-frame-" + std::to_string(1) + ".png";
-	// 	loadimage(&img, _T(path.c_str()));
-	// 	putimage(0 + i*100,0 + i*100,&img);
-	// }
-	
-	// loadimage(&img,_T("images/btn_default.png"));
-	// putimage_alpha(0, 0, &img_btn_default);
 	
 
 	setbkmode(TRANSPARENT);//显示透明文字
@@ -211,8 +182,6 @@ int main()
 		{
             scene_manager.ProcessMessage(msg);
 		}
-		// 逻辑处理
-        //scene_manager.Update();
 		// 绘制
         scene_manager.Draw();
 

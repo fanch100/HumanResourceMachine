@@ -21,7 +21,7 @@ extern std::unordered_map<int, std::string> operation_number_to_name;
 class Level
 {
 	public:
-		Level(LPCTSTR path, LPCTSTR path_state);
+		Level(LPCTSTR path, LPCTSTR path_state, int id);
 		// Level& operator= (const Level& level);
 		// Level(const Level& level);
 		~Level();
@@ -33,6 +33,7 @@ class Level
         void Play(int cur_step);
 		bool Check();
 		bool is_completed;
+		int tot_step = 0;
 		void LevelComplete();
 	private:
 		enum class OperationType
@@ -47,6 +48,8 @@ class Level
 			JumpIfZero = 8,
 			Invalid = 9,
 		};
+		
+		int level_id;
 		int is_useful;
 		int available_space;
 		int input_size, output_size;

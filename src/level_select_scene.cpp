@@ -5,8 +5,7 @@ LevelSelectScene::LevelSelectScene() = default;
 LevelSelectScene::~LevelSelectScene() = default;
 void LevelSelectScene::Init()
 {
-    
-    std::cout << "SelectLevel Scene Init" << std::endl;
+    ;
 }
 void LevelSelectScene::Draw()
 {
@@ -16,11 +15,10 @@ void LevelSelectScene::Draw()
         level_select_btn_list[i].Draw(_T(std::to_string(i+1).c_str()));
     }
     level_select_btn_quit.Draw(_T("Quit"));
-    std::cout << "SelectLevel Scene Draw" << std::endl;
 }
 void LevelSelectScene::Update()
 {
-    std::cout << "SelectLevel Scene Update" << std::endl;
+    ;
 }
 void LevelSelectScene::ProcessMessage(const ExMessage &msg)
 {
@@ -29,9 +27,8 @@ void LevelSelectScene::ProcessMessage(const ExMessage &msg)
         level_select_btn_list[i].ProcessMessage(msg);
     }
     level_select_btn_quit.ProcessMessage(msg);
-    std::cout << "SelectLevel Scene ProcessMessage" << std::endl;
 }
 void LevelSelectScene::Quit()
 {
-    std::cout << "SelectLevel Scene Quit" << std::endl;
+    ;
 }

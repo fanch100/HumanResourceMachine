@@ -47,10 +47,6 @@ bool TextBox::CheckCursorInTextBox(int x, int y)//判断光标是否在按钮上
 // }
 void TextBox::Draw()
 {
-    std:: cout << "left = " << position.left << std::endl;
-    std:: cout << "top = " << position.top << std::endl;
-    std:: cout << "right = " << position.right << std::endl;
-    std:: cout << "bottom = " << position.bottom << std::endl;
     setlinecolor(LIGHTGRAY); 
     setbkcolor(0xeeeeee);       
     setfillcolor(0xeeeeee);      
@@ -66,7 +62,6 @@ void TextBox::Clear()
 }
 void TextBox::ProcessMessage(const ExMessage &msg)
 {
-    // std :: cout << "TextBox::ProcessMessage" << std::endl;
     // setlinecolor(BLACK)c;          
     // setbkcolor(WHITE);              
     // setfillcolor(WHITE);           
@@ -96,7 +91,6 @@ void TextBox::ProcessMessage(const ExMessage &msg)
             case '\r':                // 用户按回车键，结束文本输入
             case '\n':
                 is_input = false;
-                std :: cout << "Text=\"" << text  << '\"'<< std :: endl;
                 break;
             default:                // 用户按其它键，接受文本输入
                 if (len < maxlen - 1)
