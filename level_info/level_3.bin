@@ -4,3 +4,4 @@
 7 -3 
 3 
 255
+For each 2 numbers in the input sequence, output one of them if they are equal, otherwise do nothing, Repeat .

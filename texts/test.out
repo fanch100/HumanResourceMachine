@@ -1,0 +1,2765 @@
+path is level_info/level_1.bin
+input_size=2
+output_size=2
+path is level_info/level_2.bin
+input_size=8
+output_size=8
+path is level_info/level_3.bin
+input_size=8
+output_size=2
+path is level_info/level_4.bin
+input_size=8
+output_size=2
+Menu Scene Init
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+Menu Scene Quit
+SelectLevel Scene Init
+SelectLevel Scene Draw
+SelectLevel Scene Draw
+SelectLevel Scene Draw
+SelectLevel Scene Draw
+SelectLevel Scene Draw
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SelectLevel Scene Draw
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene Quit
+game_id is 1
+i is 1
+i is 2
+space_row: 0
+space_column: 0
+available_space: 0
+Ready to input operations
+Ready to input operations
+11
+str=inbox
+type = 1x = 1061109567
+str=copyto
+type = 4x = 0
+str=inbox
+type = 1x = 1061109567
+str=copyto
+type = 4x = 1
+str=copyfrom
+type = 3x = 0
+str=sub
+type = 6x = 1
+str=outbox
+type = 2x = 1061109567
+str=copyfrom
+type = 3x = 1
+str=sub
+type = 6x = 0
+str=outbox
+type = 2x = 1061109567
+str=jump
+type = 7x = 1
+Game Scene Init
+SelectLevel Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Game Scene ProcessMessage
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+is_hiding:0
+is_hiding:0
+Slider_str:inbox
+Slider_str:outbox
+level_info:inbox and outbox
+game_result = 0
+Operation List Size = 11
+left = 900
+top = 300
+right = 1000
+bottom = 350
+left = 100
+top = 650
+right = 700
+bottom = 700
+Game Scene Draw
+SceneManager::ProcessMessage
+Level::QuitGame()
+Game Scene Quit
+SelectLevel Scene Init
+Game Scene ProcessMessage
+SelectLevel Scene Draw
+SelectLevel Scene Draw
+SelectLevel Scene Draw
+SelectLevel Scene Draw
+SelectLevel Scene Draw
+SelectLevel Scene Draw
+SelectLevel Scene Draw
+SelectLevel Scene Draw
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SelectLevel Scene Draw
+SelectLevel Scene Draw
+SelectLevel Scene Draw
+SelectLevel Scene Draw
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene ProcessMessage
+SelectLevel Scene Draw
+SelectLevel Scene Draw
+SceneManager::ProcessMessage
+SelectLevel Scene Quit
+Menu Scene Init
+SelectLevel Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage
+SceneManager::ProcessMessage
+Menu Scene ProcessMessage

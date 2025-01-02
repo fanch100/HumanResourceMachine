@@ -5,10 +5,121 @@
             "label": "build",
             "command": "D:\\TDM-GCC-64\\bin\\g++.exe",
             "args": [
+                // "-fdiagnostics-color=always",
+                // "-g",
+                "./src_test/HumanResourceMachine.cpp",
+                "./src_test/Foo.cpp",
+                "./src_test/Foo2.cpp",
+                "-leasyx",
+                "-lgdi32",
+                "-lole32",
+                "-lmsimg32",
+                "-o",
+                "HumanResourceMachine.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "构建项目"
+        }, 
+        {//用这个
+            "type": "cppbuild",
+            "label": "build1",
+            "command": "D:\\TDM-GCC-64\\bin\\g++.exe",
+            "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "./src/HumanResourceMachine.cpp",
-                "./src/Foo.cpp",
+                "${file}",
+                "-leasyx",
+                "-lgdi32",
+                "-lole32",
+                "-lmsimg32",
+                "-o",
+                "HumanResourceMachine.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "调试器生成的任务。"
+        },
+        {
+            "type": "cppbuild",
+            "label": "build main",
+            "command": "D:\\TDM-GCC-64\\bin\\g++.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "HumanResourceMachine.cpp",
+                "-leasyx",
+                "-lgdi32",
+                "-lole32",
+                "-lmsimg32",
+                "-o",
+                "HumanResourceMachine.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "构建main项目"
+        }, 
+        {
+            "type": "cppbuild",
+            "label": "build2",
+            "command": "D:\\TDM-GCC-64\\bin\\g++.exe",
+            "args": [
+                // "-fdiagnostics-color=always",
+                "-g",
+                "./src/main.cpp",
+                "./src/tool.cpp",
+
+                "./src/button.cpp",
+                "./src/start_button.cpp",
+                "./src/level_select_button.cpp",
+                "./src/menu_quit_button.cpp",
+                "./src/level_select_quit_button.cpp",
+                "./src/game_quit_button.cpp",
+                "./src/game_play_button.cpp",
+                "./src/game_stop_button.cpp",
+                "./src/game_file_input_button.cpp",
+                "./src/game_input_button.cpp",
+                "./src/game_delete_button.cpp",
+
+                "./src/scene.cpp",
+                "./src/scene_manager.cpp",
+                "./src/menu_scene.cpp",
+                "./src/level_select_scene.cpp",
+                "./src/game_scene.cpp",
+
+                "./src/block.cpp",
+                "./src/slider.cpp",
+                "./src/level.cpp",
+                "./src/text_box.cpp",
+                "./src/player.cpp",
+                "./src/space.cpp",
+                "./src/operation.cpp",
+                
+
                 "-leasyx",
                 "-lgdi32",
                 "-lole32",
@@ -26,60 +137,7 @@
                 "kind": "build",
                 "isDefault": true
             },
-            "detail": "构建项目"
-        }, 
-        {
-            "type": "cppbuild",
-            "label": "C/C++: g++.exe 生成活动文件",
-            "command": "D:\\TDM-GCC-64\\bin\\g++.exe",
-            "args": [
-                "-fdiagnostics-color=always",
-                "-g",
-                "${file}",
-                "-leasyx",
-                "-lgdi32",
-                "-lole32",
-                "-lmsimg32",
-                "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
-            ],
-            "options": {
-                "cwd": "${fileDirname}"
-            },
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "detail": "调试器生成的任务。"
-        },
-        {
-            "type": "cppbuild",
-            "label": "build main",
-            "command": "D:\\TDM-GCC-64\\bin\\g++.exe",
-            "args": [
-                "-fdiagnostics-color=always",
-                "-g",
-                "-leasyx",
-                "-lgdi32",
-                "-lole32",
-                "-lmsimg32",
-                "-o",
-                "main.exe"
-            ],
-            "options": {
-                "cwd": "${workspaceFolder}"
-            },
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "detail": "构建main项目"
+            "detail": "构建build项目2"
         }, 
     ],
     "version": "2.0.0"
